@@ -1,63 +1,79 @@
 <template>
-  <t-menu theme="light" :default-value="pageStore.pageIndex" :collapsed="true" @change="handleChange">
-    <template #logo>
-      <img :width="40" :src="iconUrl" alt="logo" />
-    </template>
+  <div class="sidebar-container">
+    <t-menu theme="light" :default-value="pageStore.pageIndex" collapsed @change="handleChange">
+      <!-- Logo section with improved styling -->
+      <template #logo>
+        <div class="logo-container">
+          <img :width="36" :src="iconUrl" alt="logo" />
+        </div>
+      </template>
 
-    <t-menu-group title="功能导航">
+      <!-- Main navigation items with improved styling -->
+      <t-menu-group>
+        <t-menu-item value="1" to="/interview" class="menu-item">
+          <template #icon>
+            <t-icon name="desktop" class="menu-icon" />
+          </template>
+          模拟面试
+        </t-menu-item>
 
-      <t-menu-item value="1" to="/interview">
-        <template #icon>
-          <t-icon name="desktop" />
-        </template>
-        模拟面试
-      </t-menu-item>
-      <div style="height: 10px;"></div>
+        <div style="height: 10px;"></div>
 
-      <t-menu-item value="2" to="/resume">
-        <template #icon>
-          <t-icon name="file" />
-        </template>
-        个人简历
-      </t-menu-item>
-      <div style="height: 10px;"></div>
+        <t-menu-item value="2" to="/resume" class="menu-item">
+          <template #icon>
+            <t-icon name="file" class="menu-icon" />
+          </template>
+          个人简历
+        </t-menu-item>
+        <div style="height: 10px;"></div>
 
-      <t-menu-item value="3">
-        <template #icon>
-          <t-icon name="folder" />
-        </template>
-        岗位信息
-      </t-menu-item>
-    </t-menu-group>
+        <t-menu-item value="3" class="menu-item">
+          <template #icon>
+            <t-icon name="folder" class="menu-icon" />
+          </template>
+          岗位信息
+        </t-menu-item>
 
+        <div style="height: 10px;"></div>
+        
+        <t-menu-item value="4" class="menu-item">
+          <template #icon>
+            <t-icon name="chart" class="menu-icon" />
+          </template>
+          面试分析
+        </t-menu-item>
 
-    <!-- <t-menu-group title="更多">
-      <t-menu-item value="item3">
-        <template #icon>
-          <t-icon name="user" />
-        </template>
-        个人页
-      </t-menu-item>
-      <t-menu-item value="item4">
-        <template #icon>
-          <t-icon name="login" />
-        </template>
-        登录页
-      </t-menu-item>
-    </t-menu-group> -->
+        <div style="height: 10px;"></div>
+        
+        <t-menu-item value="5" class="menu-item">
+          <template #icon>
+            <t-icon name="star" class="menu-icon" />
+          </template>
+          智能推荐
+        </t-menu-item>
+      </t-menu-group>
 
-    <template #operations>
-      <t-tooltip class="placement right-full align" content="登录" :overlay-style="{ width: '200px' }" placement="right"
-        show-arrow>
-        <t-button block variant="text" shape="square" @click="loginVisible = true">
-          <template #icon><t-icon name="login" /></template>
-        </t-button>
-      </t-tooltip>
-    </template>
-  </t-menu>
+      <!-- Operations section at the bottom -->
+      <template #operations>
+        <div class="operations-container">
+          <t-tooltip content="登录" placement="right" show-arrow>
+            <t-button variant="text" shape="square" @click="loginVisible = true" class="login-button">
+              <template #icon><t-icon name="user" /></template>
+            </t-button>
+          </t-tooltip>
+          
+          <t-tooltip content="设置" placement="right" show-arrow>
+            <t-button variant="text" shape="square" class="settings-button">
+              <template #icon><t-icon name="setting" /></template>
+            </t-button>
+          </t-tooltip>
+        </div>
+      </template>
+    </t-menu>
+  </div>
 
-  <!-- 登录对话框 -->
-  <t-dialog :footer="false" placement="center" v-model:visible="loginVisible">
+  <!-- 登录对话框 - Enhanced styling -->
+  <t-dialog :footer="false" placement="center" v-model:visible="loginVisible" class="login-dialog">
     <t-image fit="cover" position="center" src="../../public/img/logo_chinese.png" :style="{ height: '80px' }" />
     <div style="height: 30px;"></div>
     <t-form ref="form" :data="formData" :colon="true" :label-width="0" @reset="onReset" @submit="onSubmit">
@@ -87,7 +103,6 @@
           没有账号，前去注册 <t-icon name="arrow-right" />
         </p>
       </router-link>
-
     </t-form>
   </t-dialog>
 </template>
@@ -138,7 +153,6 @@ const onSubmit = () => {
         let user = res.data.data;
         userStore.setUser(user);
         localStorage.setItem('user', JSON.stringify(user))
-        // console.log("我是store的user ",userStore.user);
         getResumeList();
         resumeStore.setResumeMsg("");
       }
@@ -163,6 +177,76 @@ onMounted(() => {
     router.push('/resume');
   }
 });
-
-
 </script>
+
+<style scoped>
+.sidebar-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.menu-item {
+  margin: 8px 0;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.menu-icon {
+  font-size: 20px;
+}
+
+.operations-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px 0;
+  gap: 12px;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.login-button, .settings-button {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.login-button:hover, .settings-button:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.login-dialog :deep(.t-dialog__body) {
+  padding: 24px;
+}
+
+/* Override TDesign menu styles for better aesthetics */
+:deep(.t-menu) {
+  border-right: none;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+:deep(.t-menu__item) {
+  margin: 4px 8px;
+}
+
+:deep(.t-menu__item.t-is-active) {
+  background-color: rgba(0, 82, 217, 0.1);
+  font-weight: 500;
+}
+
+:deep(.t-menu__item:hover) {
+  background-color: rgba(0, 0, 0, 0.03);
+}
+</style>

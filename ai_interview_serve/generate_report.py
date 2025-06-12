@@ -43,7 +43,7 @@ def generate_interview_evaluation(user_content: str):
 
 ---
 
-### 🎯 任务1：多模态数据分析评测
+### 任务1：多模态数据分析评测
 
 请结合语音表达、视觉行为、语言结构三个层面，对面试者进行定量能力评分（范围：0~100）。每项评分请基于多模态数据给出合理判断，尤其注意结合结构特征与行为语义，不要仅根据数值判断：
 
@@ -56,7 +56,7 @@ def generate_interview_evaluation(user_content: str):
 
 ---
 
-### 🧠 任务2：智能反馈建议生成
+### 任务2：智能反馈建议生成
 
 请基于每一轮的多模态数据，生成以下反馈内容：
 
@@ -87,7 +87,7 @@ def generate_interview_evaluation(user_content: str):
 
 ---
 
-### 📦 输出格式要求
+### 输出格式要求
 
 请以如下结构返回完整的 JSON 格式评估报告：
 
@@ -141,21 +141,38 @@ def generate_interview_evaluation(user_content: str):
 }
 '''
 
-    # 发起请求
-    response = client.chat.completions.create(
-        model="doubao-1-5-pro-32k-250115",
-        messages=[
-            {"role": "system", "content": system_prompt},
-            {"role": "user", "content": user_content}
-        ],
-        extra_headers={'x-is-encrypted': 'true'},
-        temperature=1,
-        top_p=0.7,
-        max_tokens=4096
-    )
+    try:
+        response = client.chat.completions.create(
+            model="doubao-1-5-pro-32k-250115",
+            messages=[
+                {"role": "system", "content": system_prompt},
+                {"role": "user", "content": user_content}
+            ],
+            extra_headers={'x-is-encrypted': 'true'},
+            temperature=1,
+            top_p=0.7,
+            max_tokens=4096
+        )
+    except Exception as e:
+        print("LLM API 请求异常:", str(e))
+        return ""
 
-    # 返回结果
-    return response.choices[0].message.content
+        # 获取返回内容
+    content = response.choices[0].message.content.strip()
+
+    # 打印调试
+    # print("模型原始输出:", repr(content))
+
+    # 如果为空，直接返回空字符串
+    if not content:
+        print("模型返回为空内容")
+        return ""
+
+    # 如果返回内容非标准 JSON 开头，比如加了 markdown ```json\n 开头
+    if content.startswith("```json"):
+        content = content.strip("```json").strip("```").strip()
+
+    return content
 
 
 if __name__ == '__main__':

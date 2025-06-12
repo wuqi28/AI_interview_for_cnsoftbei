@@ -944,7 +944,7 @@ onMounted(() => {
 
 .report-wrapper {
     width: 100%;
-    max-width: 1200px;
+    min-width: 1400px;
     margin: 0 auto;
     background: var(--td-bg-color-container);
     border-radius: 0 0 var(--td-border-radius) var(--td-border-radius);

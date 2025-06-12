@@ -39,7 +39,7 @@ if (user) {
         })
 }
 
-current_interview_id = "网易-前端开发工程师-20250606171714"
+// current_interview_id = "网易-前端开发工程师-20250606171714"
 if (current_interview_id) {
     console.log("current_interview_id is exist", current_interview_id)
     interviewStore.setCurrentInterviewId(current_interview_id)

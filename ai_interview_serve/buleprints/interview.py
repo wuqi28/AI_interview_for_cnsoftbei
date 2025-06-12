@@ -297,8 +297,20 @@ def finish_interview():
     turns = InterviewTurnModel.query.filter_by(interview_id=interview_id).all()
     result = [turn.to_dict() for turn in turns]
 
-    # 生成多模态评测报告数据
+    # 生成多模态评测报告数据（可能是字符串或对象）
     interview_report_data = generate_interview_evaluation(str(result))
+
+    print(interview_report_data)
+
+    # 检查是否为空或非法字符串
+    if isinstance(interview_report_data, str):
+        interview_report_data = interview_report_data.strip()
+        if not interview_report_data:
+            return R(code=ERROR, message='报告内容为空，无法解析', data=None)
+        try:
+            interview_report_data = json.loads(interview_report_data)
+        except json.JSONDecodeError as e:
+            return R(code=ERROR, message=f'报告解析失败: {str(e)}', data={"raw": interview_report_data})
 
     # 构建保存路径
     save_dir = os.path.join(current_app.root_path, "static", email, current_interview_id)
