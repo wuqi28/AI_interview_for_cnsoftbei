@@ -1,0 +1,22 @@
+{
+  "email": "wuqi.stu@yangtzeu.edu.cn",
+  "job": {
+    "company": "武汉微云创想（杜女士，HR）",
+    "description": "我们正在寻找一位有潜力的后端开发工程师加入我们的团队。您将参与软件项目的设计和开发工作，包括需求分析设计、编码和单元测试等工作。负责完成重要业务模块及核心框架的搭建和编码实现。您需要具备扎实的Java基础，熟悉Java技术体系，如集合、IO、多线程等技术的应用场景。熟练掌握Spring、SpringMVC、SpringBoot、SpringCloud、MyBatis等主流框架的使用及其原理。此外，您还需要熟悉MySQL数据库的开发、配置、管理、调试，熟练掌握SQL查询优化。我们希望您能够持续优化架构和系统的可扩展性，参与系统的长期设计规划，并快速响应产品升级和错误修订需求。",
+    "education": "本科",
+    "experience": "在校/应届",
+    "location": "武汉",
+    "salary": "10-15K·13薪",
+    "title": "后端开发工程师",
+    "similarity": 95
+  },
+  "resumeMarkdown": "# 吴奇\n\n## 联系方式\n男 | 22岁 | 共产党员  \n电话：18671505901  \n邮箱：857592710@qq.com\n\n## 求职意向\n后端开发\n\n## 专业技能\n1. 熟练Java Web开发，掌握Spring、SpringMVC、Mybtais、SpringBoot、Maven\n2. 熟悉前端开发，掌握vue、Element ui、ECharts、Bootstrap 等开发框架\n3. 熟练设计关系型数据库，用过MySQL、postgreSQL，熟练使用非关系型数据库，包括redis\n4. 熟悉数据结构与常用算法\n5. 熟练使用 IDEA、HBuilder、VS code、Navicat等开发工具\n6. 熟悉Linux系统、服务器搭建\n\n## 教育经历\n- 武汉工程大学邮电与信息工程学院  本科  计算机科学与技术  2022-2024\n- 长江职业学院  大专  软件技术  2019-2022\n\n## 项目经历\n### 链家网数据可视化\n- **职位**：全栈\n- **时间**：2023.02-2023.03\n- **项目简介**：实现了链家网的数据分析可视化，为客户提供购房向导，管理员可在系统中管理爬取的房屋信息\n- **技术栈**：python爬虫 + Element ui + vue2 + ECharts + SSM + MySQL\n- **主要内容**：\n  1. 通过python的requests模块将html页面数据请求过来，parsel模块以css选择器将相关数据爬取并持久化至mysql数据库\n  2. 针对房屋数据表中的20多个字段数据可视化\n  3. 多条件搜索的情况下使用Mybatis的动态SQL以应对各种情况，降低容错率\n\n### 高校数据可视化大屏\n- **职位**：全栈\n- **时间**：2023.04-2023.04\n- **项目简介**：对于全国高校数据做了深度可视化分析，以方便查看各省市高校情况以及历年来高校学生数量增长趋势\n- **技术栈**：Element ui + vue2 + ECharts + SSM + MySQL\n- **主要内容**：\n  1. 使用ECharts的china.js地图组件，针对全国各省市高校数量可视化\n\n### 运动会报名管理系统\n- **职位**：全栈\n- **时间**：2022.03-2022.03\n- **项目简介**：主要用于运动员报名参赛填报信息，后台管理系统包括通知、管理员信息、赛程、赛项、报名信息、成绩打分、照片墙\n- **技术栈**：Element ui + vue2 + SSM + MySQL\n- **主要内容**：\n  1. 数据库包含9张表，使用中间表将多对多的实体表关联，降低数据冗余\n  2. 使用Compressor库压缩图片占用，以减少占用服务器资源\n  3. 通过Session保存的当前用户身份，给不同的用户分配权限\n\n### 菜鸟裹裹可视化\n- **职位**：全栈\n- **时间**：2023.03-2023.03\n- **项目简介**：对菜鸟驿站制定了包裹、营收等数据可视化大屏，另外管理员可以对包裹数据CRUD\n- **技术栈**：Element ui + vue2 + ECharts + SSM + MySQL + Redis\n- **主要内容**：\n  1. 使用ECharts的china.js地图组件，针对来自全国各地的包裹可视化各省市包裹数量\n  2. 数据量高达100W之余，当数据库发生变动，将主要数据存储在Redis中，以提高查询速度\n  3. 针对不同条件查询，利用Mybatis动态查询以满足各种复杂的情况\n\n### 在线数据可视化分析平台\n- **职位**：前端\n- **时间**：2021.04-2021.07\n- **项目简介**：基于B/S架构的数据可视化分析平台，可以理解为传统的BI面板，类比TableAU。\n- **技术栈**：HTML+CSS+JS+Bootstrap3+Ajax+ECharts+Flask+Redis+PostgreSQL\n- **我的职责**：\n  1. 用Bootstrap栅栏布局搭建页面，对每一块具体设计，包括注册、登录、文件上传、数据管理、表格设计、数据大屏\n  2. 使用DataTable.js对表格美化、分页、搜索\n  3. 使用SortTable.js为所在div每个元素添加拖拽功能，实现拖拽动态生成图表\n  4. 通过Ajax获取文件上传进度，动态渲染至进度条\n  5. 处理各类事件之间的冲突性\n\n## 荣誉奖项\n1. 2020-2021年“国家奖学金”\n2. 第十届“中国软件杯”国家二等奖\n3. “挑战杯”省三等奖\n4. “程序设计大赛”校赛一等奖\n\n## 自我评价\n个人总结  2019.09-2023.06\n拥有较强的学习能力，在项目开发过程中，遇到新技术现学现用，经常在B站、CSDN上找资源学习\n热爱软件事业，对IT领域的软件开发与设计有浓厚的兴趣\n\n## 资格证书\n计算机二级 普通话二级乙等",
+  "interviewerConfig": {
+    "interviewerName": "马可",
+    "interviewerValue": "110017006",
+    "vcnValue": "x4_xiaozhong",
+    "styleValue": "亲切随和型(Friendly & Supportive)"
+  },
+  "interviewer_name": "马可",
+  "interview_style": "亲切随和型(Friendly & Supportive)"
+}

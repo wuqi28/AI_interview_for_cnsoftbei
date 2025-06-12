@@ -1,0 +1,73 @@
+{
+  "industries": [],
+  "pos_types": [
+    {
+      "tag_name": "web前端开发",
+      "tag_weight": 1.157774740091012
+    },
+    {
+      "tag_name": "软件工程师",
+      "tag_weight": 0.9007012457157231
+    },
+    {
+      "tag_name": "互联网软件开发工程师",
+      "tag_weight": 0.3153926770915033
+    },
+    {
+      "tag_name": "高级软件工程师",
+      "tag_weight": 0.26932253083255175
+    },
+    {
+      "tag_name": "其他",
+      "tag_weight": 0.1977755294140134
+    }
+  ],
+  "pos_tags": [
+    {
+      "tag_name": "前端开发工程师",
+      "tag_weight": 1.2
+    },
+    {
+      "tag_name": "数据标注",
+      "tag_weight": 1.2
+    },
+    {
+      "tag_name": "开发",
+      "tag_weight": 0.5
+    },
+    {
+      "tag_name": "中高级前端开发工程师",
+      "tag_weight": 0.2848687934875488
+    },
+    {
+      "tag_name": "h5开发工程师",
+      "tag_weight": 0.28399308443069454
+    },
+    {
+      "tag_name": "javascript开发工程师",
+      "tag_weight": 0.28286857366561885
+    },
+    {
+      "tag_name": "初级前端开发工程师",
+      "tag_weight": 0.2814868283271789
+    },
+    {
+      "tag_name": "前端ui开发工程师",
+      "tag_weight": 0.2812698698043823
+    },
+    {
+      "tag_name": "手游推广员",
+      "tag_weight": 0.28042677640914915
+    },
+    {
+      "tag_name": "资深web前端开发工程师",
+      "tag_weight": 0.2802974081039428
+    }
+  ],
+  "skills_tags": [
+    {
+      "tag_name": "前端开发",
+      "tag_weight": 0.6
+    }
+  ]
+}

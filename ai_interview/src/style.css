@@ -1,0 +1,46 @@
+/* ... 已有代码 ... */
+
+body {
+  margin: 0;
+  /* 让 body 成为 flex 容器 */
+  display: flex;
+  /* 移除垂直居中 */
+  place-items: start; 
+  min-width: 320px;
+  /* 确保 body 高度为视口高度 */
+  min-height: 100vh; 
+}
+
+#app {
+  /* 让 app 容器宽度占满父元素 */
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  /* 文本左对齐 */
+  text-align: left; 
+}
+
+.el-container {
+  /* 让 el-container 高度占满父元素 */
+  height: 100vh; 
+}
+
+.el-aside {
+  /* 确保侧边栏高度占满容器 */
+  height: 100%; 
+}
+
+.el-main {
+  /* 让主内容区域自动填充剩余空间 */
+  flex: 1; 
+}
+
+.router-link-exact-active,
+.router-link-active,
+.router-link {
+  text-decoration: none;
+}
+a {
+  text-decoration: none;
+}
