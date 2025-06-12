@@ -32,6 +32,7 @@ const faceEmotion = ref(false)
 const lookingAtScreenList = ref([])
 const lookingAtScreen = ref(false)
 
+const showAnalyzing = ref(false) // 多模态数据分析进度条
 
 const isAddingVideo = ref(false)
 const bearingDegreesList = ref([])
@@ -71,9 +72,24 @@ const msgOnClickConfirm = () => {
 }
 
 const closeInterview = () => {
+    showAnalyzing.value = true
     shutdown()
     stopTimer()
-    // router.push('/report')
+    axiosLocal.get('/interview/finish_interview', {
+        params: {
+            email: userStore.user.email,
+            current_interview_id: interviewStore.current_interview_id,
+        }
+    }).then((resp) => {
+        if (resp.data.code == 200) {
+            showAnalyzing.value = false
+            // console.log('✅ 面试结束:', resp.data.data)
+            MessagePlugin.success(resp.data.message)
+            router.push('/report')
+        } else {
+            MessagePlugin.error(resp.data.message)
+        }
+    })
 }
 
 const intelligent_parsing = () => {
@@ -408,6 +424,8 @@ const video = ref(null)
 const canvas = ref(null)
 const isLookingAtScreen = ref(false)
 const isFaceEmotion = ref(false)
+const isHeadYawFrequent = ref(false)
+const isHeadTilt = ref(false)
 
 onMounted(async () => {
     await human.load()
@@ -443,6 +461,8 @@ const runDetection = async () => {
             drawLabels: false
         })
 
+        console.log(result)
+
         if (result.face.length > 0) {
             const face = result.face[0]
             // console.log(face)
@@ -465,6 +485,23 @@ const runDetection = async () => {
                 bearingDegreesList.value.push(bearingDegrees)
                 // 视线强度
                 gazeStrengthList.value.push(gazeStrength)
+            }
+
+            if (face.rotation.angle) {
+                const pitch = face.rotation.angle.pitch
+                const yaw = face.rotation.angle.yaw
+                const roll = face.rotation.angle.roll
+                console.log('头部角度:', yaw.toFixed(1), roll.toFixed(1))
+                if (yaw > 0.15 || yaw < -0.15) {
+                    isHeadYawFrequent.value = true
+                } else {
+                    isHeadYawFrequent.value = false
+                }
+                if (roll > 0.15 || roll < -0.15) {
+                    isHeadTilt.value = true
+                } else {
+                    isHeadTilt.value = false
+                }
             }
 
             // console.log('视线角度:', bearingDegrees.toFixed(1))
@@ -547,6 +584,8 @@ const nextStep = () => {
 </script>
 
 <template>
+    <AnalyzingOverlay :visible="showAnalyzing" />
+
     <t-head-menu theme="light" style="width: 100%;">
         <template #logo>
             <img height="28" src="../../public/img/logo_chinese.png" alt="logo" />
@@ -683,22 +722,51 @@ const nextStep = () => {
                         <t-icon name="lightbulb" style="margin-right: 4px; color: rgb(255, 183, 0);" />
                         问题分析
                     </template>
-                    <div v-if="isLookingAtScreen">
-                        <p style="color: green;">✅ 用户专注于屏幕</p>
-                    </div>
-                    <div v-else>
-                        <p style="color: red;">⚠️ 用户未专注于屏幕</p>
-                    </div>
 
-                    <div v-if="isFaceEmotion">
-                        <p style="color: green;">😄 用户当前情绪放松</p>
-                    </div>
-                    <div v-else>
-                        <p style="color: red;">😔 用户当前情绪紧张</p>
-                    </div>
+                    <t-row>
+                        <t-col :span="6">
+                            <div v-if="isLookingAtScreen">
+                                <p style="color: green;">✅ 用户专注于屏幕</p>
+                            </div>
+                            <div v-else>
+                                <p style="color: red;">⚠️ 用户未专注于屏幕</p>
+                            </div>
+                        </t-col>
 
+                        <t-col :span="6">
+                            <!-- 左右摇头频率分析 -->
+                            <div v-if="isHeadYawFrequent">
+                                <p style="color: red;">🔁 用户频繁左右摇头</p>
+                            </div>
+                            <div v-else>
+                                <p style="color: green;">✅ 用户头部姿态稳定</p>
+                            </div>
+                        </t-col>
+
+                    </t-row>
+
+                    <t-row>
+                        <t-col :span="6">
+                            <div v-if="isFaceEmotion">
+                                <p style="color: green;">😄 用户当前情绪放松</p>
+                            </div>
+                            <div v-else>
+                                <p style="color: red;">😔 用户当前情绪紧张</p>
+                            </div>
+                        </t-col>
+
+                        <t-col :span="6">
+                            <!-- 头部倾斜角度分析 -->
+                            <div v-if="isHeadTilt">
+                                <p style="color: orange;">📐 用户头部倾斜较大</p>
+                            </div>
+                            <div v-else>
+                                <p style="color: green;">✅ 用户坐姿端正</p>
+                            </div>
+                        </t-col>
+                    </t-row>
                 </t-card>
-                <t-card header-bordered style="height: 67vh;">
+                <t-card header-bordered style="height: 65.5vh;">
                     <template #title>
                         <t-icon name="time" style="margin-right: 4px; color: rgb(0, 82, 217);" />
                         对话历史
