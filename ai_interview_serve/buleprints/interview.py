@@ -5,6 +5,8 @@ import threading
 from datetime import datetime
 from flask import Blueprint, request, session, jsonify, current_app
 from werkzeug.utils import secure_filename
+
+from generate_questions import call_dify_workflow
 from ost import video_to_text
 from exts import api, db
 from result import R
@@ -289,6 +291,13 @@ def intelligent_parsing():
 def finish_interview():
     email = request.args.get("email")
     current_interview_id = request.args.get("current_interview_id")
+    spend_time = request.args.get("spend_time")
+
+    record = InterviewRecordModel.query.filter_by(current_interview_id=current_interview_id).first()
+
+    if record:
+        record.spend_time = spend_time
+        db.session.commit()
 
     # 查询 interview_id
     interview_id = get_interview_id_by_current_id(current_interview_id)
@@ -300,7 +309,7 @@ def finish_interview():
     # 生成多模态评测报告数据（可能是字符串或对象）
     interview_report_data = generate_interview_evaluation(str(result))
 
-    print(interview_report_data)
+    # print(interview_report_data)
 
     # 检查是否为空或非法字符串
     if isinstance(interview_report_data, str):
@@ -326,6 +335,27 @@ def finish_interview():
         return R(code=ERROR, message=f'文件保存失败: {str(e)}', data=None)
 
     return R(code=SUCCESS, message='多模态面试数据报告生成成功', data=None)
+
+
+@bp.route('/get_interview_record_by_email', methods=['GET'])
+def get_interview_record_by_email():
+    email = request.args.get("email")
+    if not email:
+        return R(code=ERROR, message="缺少 email 参数", data=None)
+
+    user_id = get_user_id_by_email(email)
+    if not user_id:
+        return R(code=ERROR, message="用户不存在", data=None)
+
+    # 查询所有面试记录
+    records = InterviewRecordModel.query.filter_by(user_id=user_id).order_by(
+        InterviewRecordModel.start_time.desc()
+    ).all()
+
+    # 转换为字典列表
+    data = [record.to_dict() for record in records]
+
+    return R(code=SUCCESS, message="查询成功", data=data)
 
 
 @bp.route('/get_interview_report', methods=['GET'])
@@ -398,3 +428,23 @@ def optimize_answer():
         # 可选：写入日志
         current_app.logger.exception("优化答案接口异常：%s", str(e))
         return R(code=ERROR, message="服务器内部错误", data=None)
+
+
+@bp.route('/generate_questions', methods=['POST'])
+def generate_questions():
+    data = request.get_json()
+    print(data)
+    result = call_dify_workflow(
+        questionCount=str(data.get('questionCount')),
+        position=data.get('position'),
+        difficulty=data.get('difficulty'),
+        knowledgePoints='"' + ','.join(data.get('knowledgePoints')) + '"',
+        resume=data.get('resume')
+    )
+    # print(result)
+    raw_text = result['data']['outputs']['text']
+    cleaned_text = raw_text.replace("```json\n", "").replace("\n```", "")
+    parsed_json = json.loads(cleaned_text)
+    result['data']['outputs']['text'] = parsed_json
+
+    return result

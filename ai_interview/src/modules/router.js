@@ -12,6 +12,8 @@ const router = createRouter({
             children: [
                 { path: "/resume", component: () => import('@/pages/resume.vue') },
                 { path: "/interview", component: () => import('@/pages/interview.vue') },
+                { path: "/interviewRecord", component: () => import('@/pages/record.vue') },
+                { path: "/exercise", component: () => import('@/pages/exercise.vue') },
             ]
         },
         { path: "/register", component: () => import('@/pages/register.vue') },

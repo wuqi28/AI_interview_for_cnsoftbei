@@ -71,6 +71,20 @@ const msgOnClickConfirm = () => {
     }, 1500)
 }
 
+function timeStringToSeconds(timeStr) {
+  const parts = timeStr.split(":").map(Number); // 拆分成 [HH, MM, SS]
+  if (parts.length !== 3) return 0;
+
+  const [hours, minutes, seconds] = parts;
+  return hours * 3600 + minutes * 60 + seconds;
+}
+
+// 示例：
+const time = "01:23:45";
+const seconds = timeStringToSeconds(time);
+console.log(seconds); // 输出 5025
+
+
 const closeInterview = () => {
     showAnalyzing.value = true
     shutdown()
@@ -79,6 +93,7 @@ const closeInterview = () => {
         params: {
             email: userStore.user.email,
             current_interview_id: interviewStore.current_interview_id,
+            spend_time: timeStringToSeconds(formattedTime.value.toString())
         }
     }).then((resp) => {
         if (resp.data.code == 200) {

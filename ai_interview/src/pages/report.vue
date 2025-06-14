@@ -6,28 +6,42 @@
             <div class="report-wrapper">
                 <!-- 页面标题 -->
                 <div class="report-header">
-                    <div class="header-content">
-                        <h1>{{ company }}-{{ position }}  面试评测报告</h1>
-                        <div class="report-meta">
-                            <div class="meta-item">
-                                <span class="meta-label">面试者</span>
-                                <span class="meta-value">{{ userStore.user.email }}</span>
-                            </div>
-                            <div class="meta-item">
-                                <span class="meta-label">面试编号</span>
-                                <span class="meta-value">{{ reportData.interview_id }}</span>
-                            </div>
-                            <div class="meta-item">
-                                <span class="meta-label">总轮次</span>
-                                <span class="meta-value">{{ reportData.total_rounds }}</span>
-                            </div>
-                            <div class="meta-item">
-                                <span class="meta-label">面试时间</span>
-                                <span class="meta-value">{{ time }}</span>
+                    <div class="header-content"
+                        style="display: flex; justify-content: space-between; align-items: center;">
+
+                        <!-- 左侧内容：标题 + 元信息 -->
+                        <div>
+                            <h1>{{ company }}-{{ position }} 面试评测报告</h1>
+                            <div class="report-meta">
+                                <div class="meta-item">
+                                    <span class="meta-label">面试者</span>
+                                    <span class="meta-value">{{ userStore.user.email }}</span>
+                                </div>
+                                <div class="meta-item">
+                                    <span class="meta-label">面试编号</span>
+                                    <span class="meta-value">{{ reportData.interview_id }}</span>
+                                </div>
+                                <div class="meta-item">
+                                    <span class="meta-label">总轮次</span>
+                                    <span class="meta-value">{{ reportData.total_rounds }}</span>
+                                </div>
+                                <div class="meta-item">
+                                    <span class="meta-label">面试时间</span>
+                                    <span class="meta-value">{{ time }}</span>
+                                </div>
                             </div>
                         </div>
+
+                        <!-- 右侧：返回按钮 -->
+                        <t-button theme="primary" shape="square" size="large"
+                            @click="$router.push('/resume')" style="width: 56px; height: 56px;">
+                            <template #icon>
+                                <t-icon name="rollback" size="24px" />
+                            </template>
+                        </t-button>
                     </div>
                 </div>
+
 
                 <!-- 分页导航 -->
                 <div class="tab-navigation">
@@ -156,23 +170,23 @@
                                     <div class="qa-section">
                                         <div class="question-block">
                                             <div class="td-tag interviewer-tag">AI面试官</div>
-                                            <div class="message-bubble interviewer-bubble">{{ round.ai_interviewer_text }}</div>
+                                            <div class="message-bubble interviewer-bubble">{{ round.ai_interviewer_text
+                                                }}</div>
                                         </div>
 
                                         <div class="answer-block">
                                             <div class="td-tag candidate-tag">面试者</div>
                                             <div class="message-bubble candidate-bubble">{{ round.speaker_text }}</div>
                                         </div>
-                                        
+
                                         <!-- 优化回答部分 -->
                                         <div class="optimized-answer-block">
                                             <div class="optimized-header">
                                                 <div class="td-tag optimized-tag">优化回答</div>
-                                                <button 
-                                                    v-if="!optimizedAnswers[roundIndex]?.loading && !optimizedAnswers[roundIndex]?.content" 
-                                                    class="td-button optimize-button" 
-                                                    @click="generateOptimizedAnswer(roundIndex, round)"
-                                                >
+                                                <button
+                                                    v-if="!optimizedAnswers[roundIndex]?.loading && !optimizedAnswers[roundIndex]?.content"
+                                                    class="td-button optimize-button"
+                                                    @click="generateOptimizedAnswer(roundIndex, round)">
                                                     生成优化回答
                                                 </button>
                                             </div>
@@ -184,10 +198,8 @@
                                                 </div>
                                                 <span>正在生成优化回答...</span>
                                             </div>
-                                            <div 
-                                                v-if="optimizedAnswers[roundIndex]?.content" 
-                                                class="message-bubble optimized-bubble"
-                                            >
+                                            <div v-if="optimizedAnswers[roundIndex]?.content"
+                                                class="message-bubble optimized-bubble">
                                                 {{ optimizedAnswers[roundIndex].content }}
                                             </div>
                                         </div>
@@ -349,17 +361,6 @@
                                     </button>
                                 </div>
                             </div>
-
-                            <div class="td-card json-card">
-                                <div class="card-header">
-                                    <h3>🔍 原始数据预览</h3>
-                                </div>
-                                <div class="card-content">
-                                    <div class="json-viewer">
-                                        <pre>{{ JSON.stringify(reportData, null, 2) }}</pre>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -374,7 +375,8 @@
                 <div style="text-align: center; margin-bottom: 40px;">
                     <div
                         style="background: linear-gradient(135deg, #0052D9 0%, #1677FF 100%); color: white; padding: 40px 20px; border-radius: 8px; margin-bottom: 30px;">
-                        <h1 style="margin: 0; font-size: 32px; font-weight: 600;">{{ company }}-{{ position }} 面试评测报告</h1>
+                        <h1 style="margin: 0; font-size: 32px; font-weight: 600;">{{ company }}-{{ position }} 面试评测报告
+                        </h1>
                         <div style="margin-top: 20px; font-size: 16px; opacity: 0.9;">
                             <div>面试者：{{ userStore.user.email }}</div>
                             <div>面试编号：{{ reportData.interview_id || 'N/A' }}</div>
@@ -583,17 +585,17 @@ const tabs = [
 
 const parseInterviewId = (str) => {
     if (!str) return { company: '', position: '', time: '' }
-    
+
     const parts = str.split('-')
     if (parts.length < 3) return { company: '', position: '', time: '' }
-    
+
     const company = parts[0]
     const position = parts.slice(1, parts.length - 1).join('-')
     const rawTime = parts[parts.length - 1]
-    
+
     const time = `${rawTime.slice(0, 4)}-${rawTime.slice(4, 6)}-${rawTime.slice(6, 8)} ` +
-    `${rawTime.slice(8, 10)}:${rawTime.slice(10, 12)}:${rawTime.slice(12, 14)}`
-    
+        `${rawTime.slice(8, 10)}:${rawTime.slice(10, 12)}:${rawTime.slice(12, 14)}`
+
     return { company, position, time }
 }
 
@@ -782,9 +784,9 @@ const generateOptimizedAnswer = async (roundIndex, round) => {
     if (!optimizedAnswers[roundIndex]) {
         optimizedAnswers[roundIndex] = { loading: false, content: '' }
     }
-    
+
     optimizedAnswers[roundIndex].loading = true
-    
+
     try {
         let resp_data = ''
         await axiosLocal.post('/interview/optimize_answer', {
@@ -795,18 +797,18 @@ const generateOptimizedAnswer = async (roundIndex, round) => {
                 resp_data = resp.data.data
             }
         })
-        
+
         // 模拟流式响应
         let optimizedAnswer = ''
         // const fullAnswer = getOptimizedAnswerExample(round.ai_interviewer_text, round.speaker_text)
         const fullAnswer = resp_data
-        
+
         for (let i = 0; i < fullAnswer.length; i += 3) {
             await new Promise(resolve => setTimeout(resolve, 30))
             optimizedAnswer += fullAnswer.substring(i, Math.min(i + 3, fullAnswer.length))
             optimizedAnswers[roundIndex].content = optimizedAnswer
         }
-        
+
     } catch (error) {
         console.error('获取优化回答失败:', error)
         optimizedAnswers[roundIndex].content = '获取优化回答失败，请稍后重试。'
@@ -898,6 +900,7 @@ watch(() => activeTab.value, handleTabChange)
 
 // 组件挂载
 onMounted(() => {
+    console.log(interviewStore.current_interview_id)
     axiosLocal.get('/interview/get_interview_report', {
         params: {
             email: userStore.user.email,
@@ -1339,7 +1342,7 @@ onMounted(() => {
     margin-bottom: 20px;
 }
 
-.question-block, 
+.question-block,
 .answer-block,
 .optimized-answer-block {
     margin-bottom: 16px;
@@ -1386,9 +1389,13 @@ onMounted(() => {
 }
 
 @keyframes loading {
-    0%, 80%, 100% {
+
+    0%,
+    80%,
+    100% {
         transform: scale(0);
     }
+
     40% {
         transform: scale(1);
     }

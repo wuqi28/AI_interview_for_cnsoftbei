@@ -300,3 +300,35 @@ def resume_match_job():
     except (KeyError, json.JSONDecodeError) as e:
         return R(code=ERROR, message="岗位匹配结果解析失败", data=None)
 
+
+@bp.route('/get_resume_md', methods=["GET"])
+def get_resume_md():
+    email = request.args.get('email')
+    current_interview_id = request.args.get('current_interview_id')
+
+    if not email or not current_interview_id:
+        return R(code=ERROR, message="缺少参数", data=None)
+
+    try:
+        json_path = os.path.join(
+            current_app.root_path,
+            "static",
+            email,
+            current_interview_id,
+            "data.json"
+        )
+
+        if not os.path.exists(json_path):
+            return R(code=ERROR, message="文件不存在", data=None)
+
+        with open(json_path, 'r', encoding='utf-8') as f:
+            data = json.load(f)
+
+        resume_md = data.get('resumeMarkdown')
+        if resume_md is None:
+            return R(code=ERROR, message="resumeMarkdown 字段未找到", data=None)
+
+        return R(code=SUCCESS, message="简历内容获取成功", data=resume_md.replace('\n', ''))
+
+    except Exception as e:
+        return R(code=ERROR, message="读取出错", data=str(e))

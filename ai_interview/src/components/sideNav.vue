@@ -1,20 +1,18 @@
 <template>
   <div class="sidebar-container">
     <t-menu theme="light" :default-value="pageStore.pageIndex" collapsed @change="handleChange">
-      <!-- Logo section with improved styling -->
       <template #logo>
         <div class="logo-container">
           <img :width="36" :src="iconUrl" alt="logo" />
         </div>
       </template>
 
-      <!-- Main navigation items with improved styling -->
       <t-menu-group>
         <t-menu-item value="1" to="/interview" class="menu-item">
           <template #icon>
             <t-icon name="desktop" class="menu-icon" />
           </template>
-          模拟面试
+          AI模拟面试
         </t-menu-item>
 
         <div style="height: 10px;"></div>
@@ -23,24 +21,24 @@
           <template #icon>
             <t-icon name="file" class="menu-icon" />
           </template>
-          个人简历
+          AI简历生成
         </t-menu-item>
         <div style="height: 10px;"></div>
 
-        <t-menu-item value="3" class="menu-item">
+        <t-menu-item value="3" to="/interviewRecord" class="menu-item">
           <template #icon>
-            <t-icon name="folder" class="menu-icon" />
+            <t-icon name="chart" class="menu-icon" />
           </template>
-          岗位信息
+          面试记录
         </t-menu-item>
 
         <div style="height: 10px;"></div>
         
-        <t-menu-item value="4" class="menu-item">
+        <t-menu-item value="4" to="/exercise" class="menu-item">
           <template #icon>
-            <t-icon name="chart" class="menu-icon" />
+            <t-icon name="book" class="menu-icon" />
           </template>
-          面试分析
+          个性化习题推荐
         </t-menu-item>
 
         <div style="height: 10px;"></div>
@@ -53,7 +51,6 @@
         </t-menu-item>
       </t-menu-group>
 
-      <!-- Operations section at the bottom -->
       <template #operations>
         <div class="operations-container">
           <t-tooltip content="登录" placement="right" show-arrow>
@@ -72,7 +69,6 @@
     </t-menu>
   </div>
 
-  <!-- 登录对话框 - Enhanced styling -->
   <t-dialog :footer="false" placement="center" v-model:visible="loginVisible" class="login-dialog">
     <t-image fit="cover" position="center" src="../../public/img/logo_chinese.png" :style="{ height: '80px' }" />
     <div style="height: 30px;"></div>
@@ -115,10 +111,13 @@ import { NotifyPlugin } from 'tdesign-vue-next';
 import axiosLocal from '../modules/axiosLocal';
 import { useUserStore } from '../stores/userStore';
 import { useResumeStore } from '../stores/resumeStore';
+import { useInterviewStore } from '../stores/interviewStore';
+import { useRouter } from 'vue-router';
 
 const pageStore = usePageStore();
 const userStore = useUserStore();
 const resumeStore = useResumeStore();
+const interviewStore = useInterviewStore();
 
 const router = useRouter();
 
@@ -154,6 +153,7 @@ const onSubmit = () => {
         userStore.setUser(user);
         localStorage.setItem('user', JSON.stringify(user))
         getResumeList();
+        getInterviewRecordByEmail();
         resumeStore.setResumeMsg("");
       }
     })
@@ -162,9 +162,20 @@ const onSubmit = () => {
 const getResumeList = () => {
   axiosLocal.get('/resume/get_resume', { params: { email: userStore.user.email } })
     .then((res) => {
-      console.log(res.data);
+      // console.log(res.data);
       if (res.data.code == 200) {
         resumeStore.setResumeList(res.data.data);
+      }
+    })
+}
+
+const getInterviewRecordByEmail = () => {
+  axiosLocal.get('/interview/get_interview_record_by_email', { params: { email: userStore.user.email } })
+    .then((res) => {
+      // console.log(res.data);
+      if (res.data.code == 200) {
+        interviewStore.setInterviewRecordList(res.data.data);
+        // console.log(interviewStore.interview_record_list);
       }
     })
 }
@@ -175,6 +186,10 @@ onMounted(() => {
     router.push('/interview');
   } else if (pageStore.pageIndex === '2') {
     router.push('/resume');
+  } else if (pageStore.pageIndex === '3') {
+    router.push('/interviewRecord');
+  } else if (pageStore.pageIndex === '4') {
+    router.push('/exercise');
   }
 });
 </script>

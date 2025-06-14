@@ -240,7 +240,7 @@ const generateResume = async () => {
         <t-row :gutter="16" style="margin-bottom: 20px;">
             <t-col :span="6">
                 <!-- AI简历生成 -->
-                <t-card>
+                <t-card style="box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.05);">
                     <template #header>
                         <div class="ai-header">
                             <div class="ai-icon">✨</div>
@@ -335,7 +335,7 @@ const generateResume = async () => {
                 </t-dialog>
             </t-col>
             <t-col :span="6">
-                <t-card>
+                <t-card style="box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.05);">
                     <template #header>
                         <div class="upload-header">
                             <div class="upload-icon">📤</div>
@@ -467,7 +467,7 @@ const generateResume = async () => {
 
 <style scoped>
 .resume-page {
-    background-color: rgb(238, 238, 238);
+    background-color: rgb(245, 247, 250);
     min-height: 100vh;
     padding: 20px;
     box-sizing: border-box;

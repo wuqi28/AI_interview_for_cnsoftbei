@@ -14,6 +14,7 @@ export const useInterviewStore = defineStore('interview', {
             },
             current_interview_id: "",
             interview_record: {},
+            interview_record_list: [],
             interviewConfig: {
                 interviewerName: "马可",
                 interviewerValue: "cnr5dg8n2000000003",
@@ -45,6 +46,9 @@ export const useInterviewStore = defineStore('interview', {
         },
         setInterviewRecord(interview_record) {
             this.interview_record = interview_record;
+        },
+        setInterviewRecordList(interview_record_list) {
+            this.interview_record_list = interview_record_list;
         },
         setQuestionConfig(current_question_index, question_num, question_type) {
             this.question_config.current_question_index = current_question_index;
