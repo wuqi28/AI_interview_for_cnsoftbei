@@ -1,0 +1,25 @@
+{
+  "interview_id": null,
+  "total_rounds": 0,
+  "score": "由于没有提供面试数据，无法给出得分",
+  "summary": "未提供面试数据，无法总结面试表现",
+  "mbti": "未提供面试数据，无法判断MBTI类型",
+  "knowledge_analysis": [],
+  "scores": {
+    "专业知识水平": null,
+    "技能匹配度": null,
+    "语言表达能力": null,
+    "逻辑思维能力": null,
+    "创新能力": null,
+    "应变抗压能力": null
+  },
+  "round_analysis": [],
+  "multimodal_signal_summary": {
+    "audio": "未提供语音数据，无法分析",
+    "video": "未提供视频数据，无法分析",
+    "text": "未提供文本数据，无法分析"
+  },
+  "recommendations": [],
+  "highlight_abilities": [],
+  "learning_path": []
+}

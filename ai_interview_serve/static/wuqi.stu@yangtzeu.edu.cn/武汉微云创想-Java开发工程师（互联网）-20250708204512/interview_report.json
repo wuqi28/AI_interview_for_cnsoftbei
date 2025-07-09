@@ -1,0 +1,149 @@
+{
+  "interview_id": 145,
+  "total_rounds": 2,
+  "score": "60",
+  "summary": "面试者在面试过程中展现出一定的专业知识和技能，但在语言表达上存在较多语气词，逻辑虽有体现但不够清晰流畅，整体表现有待提升。",
+  "mbti": "ENTP，面试者语音情绪有惊喜感，表达相对积极主动，尝试有条理地阐述观点，但也有较多停顿和语气词，推测其为ENTP，这类人通常思维活跃、乐于表达，但有时会因想法较多而表达不够流畅。",
+  "knowledge_analysis": [
+    {
+      "knowledge_name": "个人介绍",
+      "knowledge_num": 60
+    },
+    {
+      "knowledge_name": "Java快速排序算法",
+      "knowledge_num": 70
+    }
+  ],
+  "scores": {
+    "专业知识水平": 70,
+    "技能匹配度": 70,
+    "语言表达能力": 50,
+    "逻辑思维能力": 60,
+    "创新能力": 30,
+    "应变抗压能力": 60
+  },
+  "round_analysis": [
+    {
+      "round": 1,
+      "audio_analysis": "语音情绪为惊喜，平均音高较高，可能因紧张或兴奋。语速适中，但停顿次数较多，使用了语气词‘嗯’‘呃’，影响表达流畅度。",
+      "video_analysis": "面部表情正向，眼神聚焦，视觉表现良好。",
+      "text_analysis": "语言结构上，简单提及自身优势，但存在口误（如‘spring my business’），表达不够规范。",
+      "question_analysis": "面试者尝试围绕Java技术和项目经验进行自我介绍，但表述不够准确清晰，对知识点掌握一般。"
+    },
+    {
+      "round": 2,
+      "audio_analysis": "语音情绪仍为惊喜，平均音高略有上升，语速适中，停顿次数与第一轮相同，语气词‘噢’‘嗯’‘呃’较多，逻辑阐述不够流畅。",
+      "video_analysis": "面部表情正向，但眼神未聚焦，可能注意力不够集中。",
+      "text_analysis": "语言结构上，尝试分点阐述快速排序算法，但表述中存在较多停顿和重复，不够精炼。",
+      "question_analysis": "面试者能说出快速排序算法的关键逻辑，但表述不够准确和完整，对知识点有一定掌握。"
+    }
+  ],
+  "multimodal_signal_summary": {
+    "audio": "语音情绪有惊喜感，语速适中，但停顿次数较多，使用语气词频繁，影响表达流畅度。",
+    "video": "面部表情正向，但第二轮眼神未聚焦，注意力不够集中。",
+    "text": "能围绕问题阐述内容，但存在口误，表达不够规范和精炼，结构不够清晰。"
+  },
+  "recommendations": [
+    {
+      "dimension": "语言表达能力",
+      "issue": "语速虽适中，但停顿次数多，使用语气词频繁，存在口误，表达不够流畅规范。",
+      "suggestion": "进行口语表达训练，减少语气词使用，提前准备好回答内容并进行多次演练，提高表达的流畅度和准确性。"
+    },
+    {
+      "dimension": "逻辑思维能力",
+      "issue": "内容有一定逻辑，但表述不够清晰流畅，存在重复和停顿。",
+      "suggestion": "在回答问题前先理清思路，列出要点，按照一定的逻辑顺序进行表达，多进行逻辑思维训练。"
+    },
+    {
+      "dimension": "应变抗压能力",
+      "issue": "语音情绪一直处于惊喜状态，可能在面试中较为紧张。",
+      "suggestion": "进行模拟面试训练，提高在面试场景下的心理素质，保持冷静和稳定的情绪。"
+    }
+  ],
+  "highlight_abilities": [
+    {
+      "ability": "视觉表现良好",
+      "evidence": "第一轮面部表情正向，眼神聚焦，展现出良好的精神状态。"
+    },
+    {
+      "ability": "具备一定专业知识",
+      "evidence": "能围绕Java技术和快速排序算法阐述相关内容，显示出对专业知识有一定的掌握。"
+    }
+  ],
+  "learning_path": [
+    {
+      "stage": "基础强化阶段",
+      "target_skills": [
+        "语言表达流畅度",
+        "逻辑思维能力"
+      ],
+      "improvements": [
+        "减少语气词使用",
+        "提高表达准确性",
+        "增强逻辑条理性"
+      ],
+      "recommended_practice": [
+        "进行口语复述练习",
+        "按照逻辑框架回答问题"
+      ],
+      "resources": [
+        {
+          "name": "口才训练课程",
+          "url": "https://www.example.com/oral-training"
+        },
+        {
+          "name": "逻辑思维训练书籍",
+          "url": "https://www.example.com/logic-book"
+        }
+      ]
+    },
+    {
+      "stage": "进阶提升阶段",
+      "target_skills": [
+        "应变抗压能力",
+        "专业知识深度"
+      ],
+      "improvements": [
+        "保持稳定情绪",
+        "深入理解专业知识"
+      ],
+      "recommended_practice": [
+        "参加模拟面试",
+        "深入研究专业领域问题"
+      ],
+      "resources": [
+        {
+          "name": "面试技巧培训课程",
+          "url": "https://www.example.com/interview-training"
+        },
+        {
+          "name": "专业技术论坛",
+          "url": "https://www.example.com/tech-forum"
+        }
+      ]
+    },
+    {
+      "stage": "综合实战阶段",
+      "target_skills": [
+        "综合面试能力"
+      ],
+      "improvements": [
+        "在实际面试中展现优势，弥补不足"
+      ],
+      "recommended_practice": [
+        "参加真实面试",
+        "总结面试经验"
+      ],
+      "resources": [
+        {
+          "name": "面试经验分享平台",
+          "url": "https://www.example.com/interview-experience"
+        },
+        {
+          "name": "行业前沿资讯网站",
+          "url": "https://www.example.com/industry-news"
+        }
+      ]
+    }
+  ]
+}

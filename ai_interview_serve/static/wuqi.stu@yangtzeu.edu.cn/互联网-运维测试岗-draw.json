@@ -1,0 +1,767 @@
+{
+  "status": {
+    "code": 200,
+    "message": "success"
+  },
+  "result": {
+    "name": "李华",
+    "email": "1234116@qq.com",
+    "phone": "13800138000",
+    "birthday": "1993.08.18",
+    "hukou_address": "广州天河区",
+    "surname": "李",
+    "gender_inf": "男",
+    "age": "32",
+    "qq": "1234116",
+    "hometown_address": "广州天河区",
+    "grad_time": "2019.07",
+    "college": "华东理工大学",
+    "major": "计算机科学与技术",
+    "degree": "本科",
+    "college_type": "2",
+    "college_rank": "42",
+    "college_rank_qs": "641",
+    "work_year": "0",
+    "work_year_inf": "0",
+    "work_position": "运维测试工程师",
+    "work_pos_type_p": "软件测试",
+    "work_company": "字节智维科技有限公司",
+    "work_job_nature": "实习",
+    "work_location": "上海",
+    "expect_job": "运维测试工程师",
+    "expect_jnature": "全职",
+    "expect_time": "可随时入职",
+    "work_year_norm": "0",
+    "hukou_address_norm": "中国-广东省-广州市-天河区",
+    "hometown_address_norm": "中国-广东省-广州市-天河区",
+    "work_location_norm": "中国-上海-上海市",
+    "languages": "普通话,英语",
+    "english_level": "大学英语6级",
+    "computer_level": "计算机二级",
+    "resume_type": "0",
+    "resume_name": "cv20250709_205114560_442.pdf",
+    "resume_parse_time": "2025-07-09 20:51:14",
+    "resume_integrity": "65",
+    "education_objs": [
+      {
+        "start_date": "2015.09",
+        "end_date": "2019.07",
+        "edu_college": "华东理工大学",
+        "edu_college_type": "2",
+        "edu_college_rank": "42",
+        "edu_college_rank_qs": "641",
+        "edu_major": "计算机科学与技术",
+        "edu_degree": "本科",
+        "edu_degree_norm": "本科",
+        "edu_content": "主修课程:软件测试、数据库系统、数据结构、操作系统、软件工程、项目管理"
+      }
+    ],
+    "job_exp_objs": [
+      {
+        "start_date": "2021.02",
+        "end_date": "至今",
+        "job_cpy": "字节智维科技有限公司",
+        "job_position": "运维测试工程师",
+        "job_pos_type_p": "软件测试",
+        "job_nature": "实习",
+        "job_location": "上海",
+        "job_duration": "4年5个月",
+        "job_content": "职责概述:\n负责线上系统环境的日常巡检、性能监控、日志分析与问题排查\n参与公司核心平台(用户中心/订单系统)的功能测试与接口测试工作\n编写自动化测试脚本,优化定期任务运行效率,减少回归测试时间20%\n搭建 Zabbix + Grafana 监控面板,配置多项服务健康检查与告警策略\n参与部署流程支持:构建发布包、执行测试环境部署、检查配置项、验证功能是否可用\n使用 Shell 脚本完成批量日志抓取、服务状态校验、接口联通测试等任务\n与开发、产品、运维同事紧密协作,确保版本发布的质量与稳定性\n项目成果:\n独立主导“用户登录系统高可用测试专项”,发现5处逻辑漏洞并推动优化\n借助自动化巡检脚本,缩短每日系统检查时间60%,实现错误日志的自动标记与筛选"
+      },
+      {
+        "start_date": "2019.07",
+        "end_date": "2020.12",
+        "job_cpy": "阿里巴巴",
+        "job_position": "软件测试实习生",
+        "job_pos_type_p": "软件测试",
+        "job_nature": "实习",
+        "job_location": "上海",
+        "job_duration": "1年5个月",
+        "job_content": "协助测试人员编写并执行用例,整理测试报告和缺陷记录\n参与Web服务部署及日常服务器维护工作,协助处理线上环境小故障\n编写简单Shell脚本,完成日志归档与接口巡检任务\n支持发布流程,测试各功能模块上线后是否正常运行,检查接口返回是否符合预期"
+      }
+    ],
+    "proj_exp_objs": [],
+    "social_exp_objs": [],
+    "training_objs": [],
+    "expect_job_objs": [
+      {
+        "expect_job": "运维测试工程师",
+        "expect_time": "可随时入职",
+        "expect_jnature": "全职"
+      }
+    ],
+    "lang_objs": [
+      {
+        "language_name": "英语"
+      },
+      {
+        "language_name": "普通话"
+      }
+    ],
+    "cert_objs": [
+      {
+        "langcert_lang": "英语",
+        "langcert_name": "大学英语6级"
+      },
+      {
+        "langcert_lang": "普通话",
+        "langcert_name": "普通话二级"
+      },
+      {
+        "langcert_lang": "普通话",
+        "langcert_name": "普通话高级"
+      }
+    ],
+    "all_cert_objs": [
+      {
+        "cert_name": "大学英语6级",
+        "cert_type": "certificate"
+      },
+      {
+        "cert_name": "普通话二级甲等",
+        "cert_type": "certificate"
+      },
+      {
+        "cert_name": "培训证",
+        "cert_type": "certificate"
+      },
+      {
+        "cert_name": "计算机二级",
+        "cert_type": "certificate"
+      },
+      {
+        "cert_name": "普通话二级",
+        "cert_type": "certificate"
+      },
+      {
+        "cert_name": "普通话高级",
+        "cert_type": "certificate"
+      }
+    ],
+    "skills_objs": [
+      {
+        "skills_name": "运维",
+        "skills_level": "熟悉"
+      },
+      {
+        "skills_name": "功能测试",
+        "skills_level": "熟练"
+      },
+      {
+        "skills_name": "接口测试",
+        "skills_level": "熟练"
+      },
+      {
+        "skills_name": "回归测试",
+        "skills_level": "熟练"
+      },
+      {
+        "skills_name": "编写测试用例",
+        "skills_level": "熟练"
+      },
+      {
+        "skills_name": "Bash",
+        "skills_level": "熟悉"
+      },
+      {
+        "skills_name": "Linux",
+        "skills_level": "熟悉"
+      },
+      {
+        "skills_name": "系统运维",
+        "skills_level": "掌握"
+      },
+      {
+        "skills_name": "软件测试",
+        "skills_level": "掌握"
+      },
+      {
+        "skills_name": "Python",
+        "skills_level": "掌握"
+      },
+      {
+        "skills_name": "Foundation",
+        "skills_level": "掌握"
+      },
+      {
+        "skills_name": "日志分析"
+      },
+      {
+        "skills_name": "自动化测试"
+      },
+      {
+        "skills_name": "版本发布"
+      },
+      {
+        "skills_name": "Zabbix"
+      },
+      {
+        "skills_name": "Shell脚本"
+      },
+      {
+        "skills_name": "性能监控"
+      },
+      {
+        "skills_name": "Grafana"
+      },
+      {
+        "skills_name": "执行测试"
+      },
+      {
+        "skills_name": "DevOps"
+      },
+      {
+        "skills_name": "Web服务"
+      },
+      {
+        "skills_name": "服务器维护"
+      },
+      {
+        "skills_name": "漏洞"
+      },
+      {
+        "skills_name": "排障"
+      },
+      {
+        "skills_name": "巡检"
+      }
+    ],
+    "cont_basic_info": "李华\n求职意向:运维测试工程师 到岗时间: 可随时入职 工作性质: 全职\n生日:1993.8.18   手机:13800138000\n户籍:广州天河区   邮箱:1234116@qq.com",
+    "cont_education": "华东理工大学 | 本科\n计算机科学与技术专业 | 2015.09 – 2019.07\n主修课程:软件测试、数据库系统、数据结构、操作系统、软件工程、项目管理",
+    "cont_internship": "字节智维科技有限公司 运维测试工程师 | 2021.02 – 至今 | 上海\n职责概述:\n负责线上系统环境的日常巡检、性能监控、日志分析与问题排查\n参与公司核心平台(用户中心/订单系统)的功能测试与接口测试工作\n编写自动化测试脚本,优化定期任务运行效率,减少回归测试时间20%\n搭建 Zabbix + Grafana 监控面板,配置多项服务健康检查与告警策略\n参与部署流程支持:构建发布包、执行测试环境部署、检查配置项、验证功能是否可用\n使用 Shell 脚本完成批量日志抓取、服务状态校验、接口联通测试等任务\n与开发、产品、运维同事紧密协作,确保版本发布的质量与稳定性\n项目成果:\n独立主导“用户登录系统高可用测试专项”,发现5处逻辑漏洞并推动优化\n借助自动化巡检脚本,缩短每日系统检查时间60%,实现错误日志的自动标记与筛选\n阿里巴巴(实习)软件测试实习生 | 2019.07 – 2020.12 | 上海\n协助测试人员编写并执行用例,整理测试报告和缺陷记录\n参与Web服务部署及日常服务器维护工作,协助处理线上环境小故障\n编写简单Shell脚本,完成日志归档与接口巡检任务\n支持发布流程,测试各功能模块上线后是否正常运行,检查接口返回是否符合预期",
+    "cont_job_skill": "通过大学英语CET6、普通话二级甲等、软件测试工程师(高级)培训证书、ISTQB Foundation Level计算机二级(Python)\n技能方向:系统运维 掌握情况:熟悉 Linux 运维操作,具备基础 Bash/Shell 编写能力。\n技能方向:测试能力 掌握情况:熟练编写测试用例,执行功能测试、接口测试与回归测试。",
+    "cont_my_desc": "技术全面: 兼具测试流程能力与运维排障能力,适应 DevOps 协作模式\n责任心强: 保障系统稳定为首要目标,遇突发问题积极推动解决\n学习能力强: 熟悉多种工具组合应用,愿意主动学习新工具与框架",
+    "raw_text": "李华\n求职意向:运维测试工程师 到岗时间: 可随时入职 工作性质: 全职\n生日:1993.8.18          手机:13800138000\n户籍:广州天河区         邮箱:1234116@qq.com\n教育背景\n华东理工大学 | 本科\n计算机科学与技术专业 | 2015.09 – 2019.07\n主修课程:软件测试、数据库系统、数据结构、操作系统、软件工程、项目管理\n实习经历\n字节智维科技有限公司 运维测试工程师 | 2021.02 – 至今 | 上海\n职责概述:\n负责线上系统环境的日常巡检、性能监控、日志分析与问题排查\n参与公司核心平台(用户中心/订单系统)的功能测试与接口测试工作\n编写自动化测试脚本,优化定期任务运行效率,减少回归测试时间20%\n搭建 Zabbix + Grafana 监控面板,配置多项服务健康检查与告警策略\n参与部署流程支持:构建发布包、执行测试环境部署、检查配置项、验证功能是否可用\n使用 Shell 脚本完成批量日志抓取、服务状态校验、接口联通测试等任务\n与开发、产品、运维同事紧密协作,确保版本发布的质量与稳定性\n项目成果:\n独立主导“用户登录系统高可用测试专项”,发现5处逻辑漏洞并推动优化\n借助自动化巡检脚本,缩短每日系统检查时间60%,实现错误日志的自动标记与筛选\n阿里巴巴(实习)软件测试实习生 | 2019.07 – 2020.12 | 上海\n协助测试人员编写并执行用例,整理测试报告和缺陷记录\n参与Web服务部署及日常服务器维护工作,协助处理线上环境小故障\n编写简单Shell脚本,完成日志归档与接口巡检任务\n支持发布流程,测试各功能模块上线后是否正常运行,检查接口返回是否符合预期\n技能和证书\n通过大学英语CET6、普通话二级甲等、软件测试工程师(高级)培训证书、ISTQB Foundation Level\n计算机二级(Python)\n技能方向:系统运维 掌握情况:熟悉 Linux 运维操作,具备基础 Bash/Shell 编写能力。\n技能方向:测试能力 掌握情况:熟练编写测试用例,执行功能测试、接口测试与回归测试。\n自我评价\n技术全面: 兼具测试流程能力与运维排障能力,适应 DevOps 协作模式\n责任心强: 保障系统稳定为首要目标,遇突发问题积极推动解决\n学习能力强: 熟悉多种工具组合应用,愿意主动学习新工具与框架"
+  },
+  "tags": {
+    "industries": [],
+    "pos_types": [
+      {
+        "tag_name": "技术支持/维护工程师",
+        "tag_weight": 2.315200562616189
+      },
+      {
+        "tag_name": "软件测试",
+        "tag_weight": 1.1
+      },
+      {
+        "tag_name": "系统测试",
+        "tag_weight": 0.7333333333333334
+      },
+      {
+        "tag_name": "软件工程师",
+        "tag_weight": 0.6724549173116683
+      },
+      {
+        "tag_name": "技术支持/维护经理",
+        "tag_weight": 0.5196914361516635
+      }
+    ],
+    "pos_tags": [
+      {
+        "tag_name": "运维测试工程师",
+        "tag_weight": 2.2
+      },
+      {
+        "tag_name": "it维护",
+        "tag_weight": 0.6193236815929413
+      },
+      {
+        "tag_name": "服务器运维工程师",
+        "tag_weight": 0.6155530321598053
+      },
+      {
+        "tag_name": "it外包工程师",
+        "tag_weight": 0.6148695945739746
+      },
+      {
+        "tag_name": "机房运维工程师",
+        "tag_weight": 0.6128867089748382
+      },
+      {
+        "tag_name": "it支持工程师",
+        "tag_weight": 0.6124379289150237
+      },
+      {
+        "tag_name": "上门工程师",
+        "tag_weight": 0.6119021701812744
+      },
+      {
+        "tag_name": "部署工程师",
+        "tag_weight": 0.6108996140956877
+      },
+      {
+        "tag_name": "idc机房运维工程师",
+        "tag_weight": 0.6097328567504883
+      },
+      {
+        "tag_name": "机房值守",
+        "tag_weight": 0.6091426527500152
+      }
+    ],
+    "skills_tags": [
+      {
+        "tag_name": "功能测试",
+        "tag_weight": 0.9671050548553468
+      },
+      {
+        "tag_name": "接口测试",
+        "tag_weight": 0.9128777503967286
+      },
+      {
+        "tag_name": "python",
+        "tag_weight": 0.6284303665161133
+      },
+      {
+        "tag_name": "系统运维",
+        "tag_weight": 0.5629176139831543
+      },
+      {
+        "tag_name": "测试",
+        "tag_weight": 0.45065999031066895
+      },
+      {
+        "tag_name": "巡检",
+        "tag_weight": 0.3921428442001343
+      },
+      {
+        "tag_name": "bash",
+        "tag_weight": 0.3509468317031861
+      },
+      {
+        "tag_name": "自动化测试",
+        "tag_weight": 0.3250896215438843
+      },
+      {
+        "tag_name": "zabbix",
+        "tag_weight": 0.2669075965881348
+      },
+      {
+        "tag_name": "自动化",
+        "tag_weight": 0.22518465518951417
+      },
+      {
+        "tag_name": "漏洞",
+        "tag_weight": 0.19493061304092407
+      },
+      {
+        "tag_name": "抓取",
+        "tag_weight": 0.1830669403076172
+      },
+      {
+        "tag_name": "测试人员",
+        "tag_weight": 0.1830277442932129
+      },
+      {
+        "tag_name": "面板",
+        "tag_weight": 0.15637803077697754
+      },
+      {
+        "tag_name": "产品",
+        "tag_weight": 0.14752448797225953
+      },
+      {
+        "tag_name": "shell脚本",
+        "tag_weight": 0.13866231441497803
+      },
+      {
+        "tag_name": "英语cet6",
+        "tag_weight": 0.08000000000000002
+      },
+      {
+        "tag_name": "普通话二级甲",
+        "tag_weight": 0.08000000000000002
+      },
+      {
+        "tag_name": "foundation",
+        "tag_weight": 0.08000000000000002
+      },
+      {
+        "tag_name": "linux 运维",
+        "tag_weight": 0.08000000000000002
+      },
+      {
+        "tag_name": "编写测试用例",
+        "tag_weight": 0.08000000000000002
+      },
+      {
+        "tag_name": "回归测试",
+        "tag_weight": 0.08000000000000002
+      }
+    ]
+  },
+  "eval": {
+    "salary": 17800
+  },
+  "profiler_result": {
+    "basic": [
+      {
+        "tag": "男",
+        "type": "gender"
+      },
+      {
+        "tag": "30-35岁",
+        "type": "age"
+      },
+      {
+        "tag": "无工作经验",
+        "type": "experience"
+      }
+    ],
+    "education": [
+      {
+        "tag": "本科学历",
+        "type": "degree"
+      },
+      {
+        "tag": "计算机科学与技术专业",
+        "type": "major"
+      },
+      {
+        "tag": "华东理工大学",
+        "type": "college"
+      },
+      {
+        "tag": "211院校",
+        "type": "college_level"
+      }
+    ],
+    "job_exp": [
+      {
+        "tag": "2023年度全球品牌价值500强",
+        "type": "company_level"
+      },
+      {
+        "tag": "运维测试工程师",
+        "type": "position"
+      },
+      {
+        "tag": "软件测试实习生",
+        "type": "position"
+      },
+      {
+        "tag": "互联网技术-运维/技术支持-运维工程师",
+        "type": "position_type"
+      },
+      {
+        "tag": "互联网技术-测试-软件测试工程师",
+        "type": "position_type"
+      },
+      {
+        "tag": "互联网技术-测试-测试工程师",
+        "type": "position_type"
+      },
+      {
+        "tag": "计算机/互联网/通信/电子-计算机软件",
+        "type": "industry"
+      },
+      {
+        "tag": "计算机/互联网/通信/电子-电子技术/半导体/集成电路",
+        "type": "industry"
+      },
+      {
+        "tag": "计算机/互联网/通信/电子-通信/电信/网络设备",
+        "type": "industry"
+      }
+    ],
+    "skills": {
+      "job_skills": [
+        {
+          "tag": "运维",
+          "type": "运维/技术支持",
+          "weight": 73
+        },
+        {
+          "tag": "日志分析",
+          "type": "运维/技术支持",
+          "weight": 72
+        },
+        {
+          "tag": "功能测试",
+          "type": "测试",
+          "weight": 71
+        },
+        {
+          "tag": "自动化测试",
+          "type": "测试",
+          "weight": 70
+        },
+        {
+          "tag": "版本发布",
+          "type": "后端开发",
+          "weight": 70
+        },
+        {
+          "tag": "Zabbix",
+          "type": "运维/技术支持",
+          "weight": 69
+        },
+        {
+          "tag": "Shell脚本",
+          "type": "其它",
+          "weight": 69
+        },
+        {
+          "tag": "性能监控",
+          "type": "运维/技术支持",
+          "weight": 68
+        },
+        {
+          "tag": "系统运维",
+          "type": "运维/技术支持",
+          "weight": 67
+        },
+        {
+          "tag": "Grafana",
+          "type": "运维/技术支持",
+          "weight": 67
+        },
+        {
+          "tag": "接口测试",
+          "type": "测试",
+          "weight": 66
+        },
+        {
+          "tag": "回归测试",
+          "type": "测试",
+          "weight": 65
+        },
+        {
+          "tag": "执行测试",
+          "type": "测试",
+          "weight": 62
+        },
+        {
+          "tag": "DevOps",
+          "type": "运维/技术支持",
+          "weight": 60
+        },
+        {
+          "tag": "软件测试",
+          "type": "测试",
+          "weight": 59
+        },
+        {
+          "tag": "编写测试用例",
+          "type": "其它",
+          "weight": 58
+        },
+        {
+          "tag": "Web服务",
+          "type": "后端开发",
+          "weight": 58
+        },
+        {
+          "tag": "Bash",
+          "type": "其它",
+          "weight": 57
+        },
+        {
+          "tag": "Python",
+          "type": "后端开发",
+          "weight": 54
+        },
+        {
+          "tag": "服务器维护",
+          "type": "运维/技术支持",
+          "weight": 53
+        },
+        {
+          "tag": "漏洞",
+          "type": "运维/技术支持",
+          "weight": 53
+        },
+        {
+          "tag": "排障",
+          "type": "运维/技术支持",
+          "weight": 52
+        },
+        {
+          "tag": "巡检",
+          "type": "质量安全",
+          "weight": 46
+        },
+        {
+          "tag": "日常巡检",
+          "type": "质量安全",
+          "weight": 45
+        },
+        {
+          "tag": "Linux",
+          "type": "运维/技术支持",
+          "weight": 45
+        }
+      ],
+      "soft_skills": [
+        {
+          "tag": "责任心强"
+        },
+        {
+          "tag": "学习能力强"
+        }
+      ],
+      "hobbies": [
+        {
+          "tag": "学英语"
+        }
+      ],
+      "languages": [
+        {
+          "tag": "英语"
+        },
+        {
+          "tag": "普通话"
+        }
+      ],
+      "certificates": [
+        {
+          "tag": "大学英语6级"
+        },
+        {
+          "tag": "普通话二级甲等"
+        },
+        {
+          "tag": "培训证"
+        },
+        {
+          "tag": "计算机二级"
+        },
+        {
+          "tag": "普通话二级"
+        },
+        {
+          "tag": "普通话高级"
+        }
+      ],
+      "awards": []
+    },
+    "stability": {
+      "average_job_time": 0,
+      "average_job_type_time": 0,
+      "average_industry_time": 0,
+      "long_job_time_num": 0,
+      "short_job_time_num": 0,
+      "job_stability": ""
+    },
+    "capacity": {
+      "education": 30,
+      "honor": 10,
+      "language": 60,
+      "management": 10,
+      "job_exp": 45,
+      "social_exp": 10
+    },
+    "predicted_pos_types": [
+      {
+        "c1": "互联网技术",
+        "c2": "运维/技术支持",
+        "c3": "运维工程师",
+        "weight": 33
+      },
+      {
+        "c1": "互联网技术",
+        "c2": "测试",
+        "c3": "软件测试工程师",
+        "weight": 28
+      },
+      {
+        "c1": "互联网技术",
+        "c2": "测试",
+        "c3": "测试工程师",
+        "weight": 17
+      }
+    ],
+    "predicted_industries_c1": [
+      {
+        "c1": "计算机/互联网/通信/电子",
+        "weight": 100
+      },
+      {
+        "c1": "贸易/消费/制造/营运",
+        "weight": 0
+      },
+      {
+        "c1": "会计/金融/银行/保险",
+        "weight": 0
+      },
+      {
+        "c1": "专业服务/教育/培训",
+        "weight": 0
+      },
+      {
+        "c1": "能源/环保/化工",
+        "weight": 0
+      },
+      {
+        "c1": "政府/非营利组织/其他",
+        "weight": 0
+      },
+      {
+        "c1": "广告/媒体",
+        "weight": 0
+      },
+      {
+        "c1": "房地产/建筑",
+        "weight": 0
+      },
+      {
+        "c1": "制药/医疗",
+        "weight": 0
+      },
+      {
+        "c1": "物流/运输",
+        "weight": 0
+      },
+      {
+        "c1": "服务业",
+        "weight": 0
+      }
+    ],
+    "predicted_industries_c2": [
+      {
+        "c1": "计算机/互联网/通信/电子",
+        "c2": "计算机软件",
+        "weight": 28
+      },
+      {
+        "c1": "计算机/互联网/通信/电子",
+        "c2": "电子技术/半导体/集成电路",
+        "weight": 8
+      },
+      {
+        "c1": "计算机/互联网/通信/电子",
+        "c2": "通信/电信/网络设备",
+        "weight": 6
+      }
+    ],
+    "predicted_salary": "10-20K",
+    "highlights": [
+      {
+        "title": "名企经历",
+        "content": "【名企经历】：就职过的公司曾入选【2023年度全球品牌价值500强】",
+        "type": "job_exp"
+      },
+      {
+        "title": "实习经验丰富",
+        "content": "【较丰富】的实习经验：毕业前有过【2段】实习或者工作经历",
+        "type": "job_exp"
+      },
+      {
+        "title": "技能丰富",
+        "content": "【很丰富】的【运维/技术支持】经验：在运维、日志分析、Zabbix、性能监控、系统运维、Grafana、DevOps、服务器维护、漏洞、排障、Linux等技能上有深入的理解",
+        "type": "job_exp"
+      },
+      {
+        "title": "技能丰富",
+        "content": "【较丰富】的【测试】经验：在功能测试、自动化测试、接口测试、回归测试、执行测试、软件测试等技能上有深入的理解",
+        "type": "job_exp"
+      },
+      {
+        "title": "211院校",
+        "content": "【较不错】的教育背景：本科学历，毕业于【211院校】",
+        "type": "education"
+      }
+    ],
+    "risks": []
+  }
+}

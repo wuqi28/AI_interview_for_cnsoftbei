@@ -1,0 +1,157 @@
+{
+  "industries": [],
+  "pos_types": [
+    {
+      "tag_name": "技术支持/维护工程师",
+      "tag_weight": 2.315200562616189
+    },
+    {
+      "tag_name": "软件测试",
+      "tag_weight": 1.1
+    },
+    {
+      "tag_name": "系统测试",
+      "tag_weight": 0.7333333333333334
+    },
+    {
+      "tag_name": "软件工程师",
+      "tag_weight": 0.6724549173116683
+    },
+    {
+      "tag_name": "技术支持/维护经理",
+      "tag_weight": 0.5196914361516635
+    }
+  ],
+  "pos_tags": [
+    {
+      "tag_name": "运维测试工程师",
+      "tag_weight": 2.2
+    },
+    {
+      "tag_name": "it维护",
+      "tag_weight": 0.6193236815929413
+    },
+    {
+      "tag_name": "服务器运维工程师",
+      "tag_weight": 0.6155530321598053
+    },
+    {
+      "tag_name": "it外包工程师",
+      "tag_weight": 0.6148695945739746
+    },
+    {
+      "tag_name": "机房运维工程师",
+      "tag_weight": 0.6128867089748382
+    },
+    {
+      "tag_name": "it支持工程师",
+      "tag_weight": 0.6124379289150237
+    },
+    {
+      "tag_name": "上门工程师",
+      "tag_weight": 0.6119021701812744
+    },
+    {
+      "tag_name": "部署工程师",
+      "tag_weight": 0.6108996140956877
+    },
+    {
+      "tag_name": "idc机房运维工程师",
+      "tag_weight": 0.6097328567504883
+    },
+    {
+      "tag_name": "机房值守",
+      "tag_weight": 0.6091426527500152
+    }
+  ],
+  "skills_tags": [
+    {
+      "tag_name": "功能测试",
+      "tag_weight": 0.9671050548553468
+    },
+    {
+      "tag_name": "接口测试",
+      "tag_weight": 0.9128777503967286
+    },
+    {
+      "tag_name": "python",
+      "tag_weight": 0.6284303665161133
+    },
+    {
+      "tag_name": "系统运维",
+      "tag_weight": 0.5629176139831543
+    },
+    {
+      "tag_name": "测试",
+      "tag_weight": 0.45065999031066895
+    },
+    {
+      "tag_name": "巡检",
+      "tag_weight": 0.3921428442001343
+    },
+    {
+      "tag_name": "bash",
+      "tag_weight": 0.3509468317031861
+    },
+    {
+      "tag_name": "自动化测试",
+      "tag_weight": 0.3250896215438843
+    },
+    {
+      "tag_name": "zabbix",
+      "tag_weight": 0.2669075965881348
+    },
+    {
+      "tag_name": "自动化",
+      "tag_weight": 0.22518465518951417
+    },
+    {
+      "tag_name": "漏洞",
+      "tag_weight": 0.19493061304092407
+    },
+    {
+      "tag_name": "抓取",
+      "tag_weight": 0.1830669403076172
+    },
+    {
+      "tag_name": "测试人员",
+      "tag_weight": 0.1830277442932129
+    },
+    {
+      "tag_name": "面板",
+      "tag_weight": 0.15637803077697754
+    },
+    {
+      "tag_name": "产品",
+      "tag_weight": 0.14752448797225953
+    },
+    {
+      "tag_name": "shell脚本",
+      "tag_weight": 0.13866231441497803
+    },
+    {
+      "tag_name": "英语cet6",
+      "tag_weight": 0.08000000000000002
+    },
+    {
+      "tag_name": "普通话二级甲",
+      "tag_weight": 0.08000000000000002
+    },
+    {
+      "tag_name": "foundation",
+      "tag_weight": 0.08000000000000002
+    },
+    {
+      "tag_name": "linux 运维",
+      "tag_weight": 0.08000000000000002
+    },
+    {
+      "tag_name": "编写测试用例",
+      "tag_weight": 0.08000000000000002
+    },
+    {
+      "tag_name": "回归测试",
+      "tag_weight": 0.08000000000000002
+    }
+  ]
+}

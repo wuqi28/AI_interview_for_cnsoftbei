@@ -1,0 +1,638 @@
+{
+  "status": {
+    "code": 200,
+    "message": "success"
+  },
+  "result": {
+    "name": "王五",
+    "gender": "男",
+    "age": "24",
+    "college": "清华大学",
+    "surname": "王",
+    "grad_time": "2025.06",
+    "major": "人工智能",
+    "degree": "本科",
+    "college_type": "1",
+    "college_rank": "2",
+    "college_rank_qs": "20",
+    "work_year": "0",
+    "work_year_inf": "0",
+    "work_pos_type_p": "其他",
+    "work_company": "科大讯飞人工智",
+    "work_job_nature": "实习",
+    "expect_job": "算法工程师",
+    "expect_salary": "35000元/月",
+    "expect_salary_min": "35000",
+    "expect_salary_max": "35000",
+    "work_year_norm": "0",
+    "languages": "普通话,法语,英语",
+    "resume_type": "0",
+    "resume_name": "cv20250708_202801201_528.pdf",
+    "resume_parse_time": "2025-07-08 20:28:01",
+    "resume_integrity": "61",
+    "education_objs": [
+      {
+        "start_date": "2021.09",
+        "end_date": "2025.06",
+        "edu_college": "清华大学",
+        "edu_college_type": "1",
+        "edu_college_rank": "2",
+        "edu_college_rank_qs": "20",
+        "edu_major": "人工智能",
+        "edu_degree": "本科",
+        "edu_degree_norm": "本科",
+        "edu_gpa": "3.8/4.0",
+        "edu_content": "核心课程:数据结构与算法, 机器学习, 深度学习, 计算机视觉, 自然语言处理"
+      }
+    ],
+    "job_exp_objs": [
+      {
+        "start_date": "2025.06",
+        "end_date": "2025.06",
+        "job_cpy": "科大讯飞人工智",
+        "job_pos_type_p": "其他",
+        "job_nature": "实习",
+        "job_duration": "0个月",
+        "job_content": "能工程师实习经历,熟悉算法\n工程师工作流程。\n综合素质:2024年本科毕业于"
+      },
+      {
+        "start_date": "2024.06",
+        "end_date": "2025.06",
+        "job_cpy": "科大讯飞",
+        "job_position": "人工智能工程师",
+        "job_pos_type_p": "其他",
+        "job_nature": "实习",
+        "job_duration": "1年",
+        "job_content": "工作职责及业绩:"
+      }
+    ],
+    "proj_exp_objs": [
+      {
+        "proj_name": "校园",
+        "proj_content": "模型训练:主导使用TensorFlow构建CNN模型,用于图像识别项目,模型准确率达到"
+      },
+      {
+        "start_date": "2023.08",
+        "end_date": "2023.11",
+        "proj_name": "基于深度学习的自然语言处理模型优化",
+        "proj_content": "算法工程师实习生"
+      }
+    ],
+    "social_exp_objs": [
+      {
+        "start_date": "2023.10",
+        "end_date": "2023.11",
+        "job_cpy": "清华大学算法与人工智能协会",
+        "job_position": "算法研究组组长"
+      }
+    ],
+    "training_objs": [],
+    "expect_job_objs": [
+      {
+        "expect_job": "算法工程师",
+        "expect_salary": "35000元/月",
+        "expect_salary_min": "35000",
+        "expect_salary_max": "35000"
+      }
+    ],
+    "lang_objs": [
+      {
+        "language_name": "普通话"
+      },
+      {
+        "language_name": "英语"
+      },
+      {
+        "language_name": "法语"
+      }
+    ],
+    "cert_objs": [],
+    "all_cert_objs": [
+      {
+        "cert_name": "项目管理师(PMP)",
+        "cert_type": "certificate"
+      }
+    ],
+    "skills_objs": [
+      {
+        "skills_name": "算法设计",
+        "skills_level": "精通"
+      },
+      {
+        "skills_name": "Python",
+        "skills_level": "精通"
+      },
+      {
+        "skills_name": "算法实现",
+        "skills_level": "熟悉"
+      },
+      {
+        "skills_name": "深度学习模型",
+        "skills_level": "掌握"
+      },
+      {
+        "skills_name": "算法",
+        "skills_level": "掌握"
+      },
+      {
+        "skills_name": "网络模型",
+        "skills_level": "掌握"
+      },
+      {
+        "skills_name": "数据预处理",
+        "skills_level": "掌握"
+      },
+      {
+        "skills_name": "自然语言处理",
+        "skills_level": "掌握"
+      },
+      {
+        "skills_name": "CNN",
+        "skills_level": "掌握"
+      },
+      {
+        "skills_name": "模型设计",
+        "skills_level": "掌握"
+      },
+      {
+        "skills_name": "RN",
+        "skills_level": "掌握"
+      },
+      {
+        "skills_name": "法语",
+        "skills_level": "掌握"
+      },
+      {
+        "skills_name": "深度学习"
+      },
+      {
+        "skills_name": "模型训练"
+      },
+      {
+        "skills_name": "机器学习算法"
+      },
+      {
+        "skills_name": "RNN"
+      },
+      {
+        "skills_name": "模型优化"
+      },
+      {
+        "skills_name": "TensorFlow"
+      },
+      {
+        "skills_name": "PyTorch"
+      },
+      {
+        "skills_name": "识别算法"
+      },
+      {
+        "skills_name": "决策树"
+      },
+      {
+        "skills_name": "人工智能"
+      },
+      {
+        "skills_name": "预处理"
+      },
+      {
+        "skills_name": "数据结构"
+      },
+      {
+        "skills_name": "智能语音"
+      }
+    ],
+    "cont_education": "2021.09-2025.06  清华大学   本科   人工智能\n学分绩点:3.8/4.0 (专业前5%)\n核心课程:数据结构与算法, 机器学习, 深度学习, 计算机视觉, 自然语言处理",
+    "cont_internship": "2024.06-2025.06\n科大讯飞   人工智能工程师\n工作职责及业绩:\n王五\n算法设计:参与智能语音识别算法的优化设计,将算法效率提升了20%。\n模型训练:使用 TensorFlow 构建 CNN 模型,训练准确率达到95%以上。\n数据预处理:负责海量语音数据的预处理工作,处理数据量超过100万条。",
+    "cont_basic_info": "年龄: 24\n系统测试:参与系统 A/B 测试,测试用例覆盖率达到99%,确保系统稳定运行。\n经验: 1\n手机: 1*********8\n性别: 男\n工作职责及业绩:\n算法优化:负责优化常见排序及图论算法,将算法运行速度提升了30%以上,应用于\n清华大学,年龄24岁,年轻有\n活力,具备良好的学习能力和",
+    "cont_campus_exp": "邮箱: ****@zcmima.cn   2023.10-2023.11\n清华大学算法与人工智能协会   算法研究组组长",
+    "cont_expect_job": "校园导航系统,提高了路径规划的效率。\n模型训练:主导使用TensorFlow构建CNN模型,用于图像识别项目,模型准确率达到\n意向岗位:算法工程师\n95%,相较于基线模型提升了15个百分点。\n薪资要求:35k",
+    "cont_proj_exp": "组织团队参与人工智能应用竞赛,负责模型评估与调优,最终团队获得校\n级二等奖,参赛项目被学校选为优秀展示项目。\n期望行业:人工智能",
+    "cont_research": "2023.08-2023.11  基于深度学习的自然语言处理模型优化\n算法工程师实习生\n:通过改进的CNN-RNN模型结构,成功将文本分类的准确率提升了15\n通SVM、决策树、随机森林、\n达到92%的准确率。\nXGBoost等机器学习算法,熟\n悉深度学习原理,熟练使用Te\nnsorFlow/PyTorch 构建神经",
+    "cont_job_skill": "专业能力:熟练掌握数据结构\n研究\n与算法设计,精通Python/C+\n研究描述:该研究旨在通过优化深度学习模型,提高自然语言处理任务的准确性和效+进行高性能算法实现,熟悉\n率。\n常见排序、查找、图论、动态\n个人职责:负责模型设计与实现,数据预处理,参数调优及结果分析。\n规划等算法及其优化实践;精\n网络模型, 具备CNN 、 RN\n与调优经验。\n语言: 普通话(母语),英语(流利),法语\n核心优势:具备较强的工程实",
+    "cont_certificate": "项目管理师(PMP)\nN 、Transformer 等模型训练",
+    "cont_hobby": "吉他,钢琴,音乐,绘画\n现能力和复杂问题建模能力,\n拥有丰富模型评估、交叉验证\n和A/B测试经验,2024年6月-\n2025年6月在科大讯飞人工智\n能工程师实习经历,熟悉算法\n工程师工作流程。\n综合素质:2024年本科毕业于",
+    "raw_text": "教育经历\n2021.09-2025.06  清华大学   本科   人工智能\n学分绩点:3.8/4.0 (专业前5%)\n核心课程:数据结构与算法, 机器学习, 深度学习, 计算机视觉, 自然语言处理\n实习经历\n2024.06-2025.06\n科大讯飞   人工智能工程师\n工作职责及业绩:\n王五\n算法设计:参与智能语音识别算法的优化设计,将算法效率提升了20%。\n模型训练:使用 TensorFlow 构建 CNN 模型,训练准确率达到95%以上。\n数据预处理:负责海量语音数据的预处理工作,处理数据量超过100万条。\n年龄: 24\n系统测试:参与系统 A/B 测试,测试用例覆盖率达到99%,确保系统稳定运行。\n经验: 1\n手机: 1*********8\n校园实践\n邮箱: ****@zcmima.cn   2023.10-2023.11\n清华大学算法与人工智能协会   算法研究组组长\n性别: 男\n工作职责及业绩:\n算法优化:负责优化常见排序及图论算法,将算法运行速度提升了30%以上,应用于\n求职意向\n校园导航系统,提高了路径规划的效率。\n模型训练:主导使用TensorFlow构建CNN模型,用于图像识别项目,模型准确率达到\n意向岗位:算法工程师\n95%,相较于基线模型提升了15个百分点。\n薪资要求:35k\n:组织团队参与人工智能应用竞赛,负责模型评估与调优,最终团队获得校\n级二等奖,参赛项目被学校选为优秀展示项目。\n期望行业:人工智能\n自我评价\n研究经历\n2023.08-2023.11  基于深度学习的自然语言处理模型优化\n算法工程师实习生\n:熟练掌握数据结构\n研究\n与算法设计,精通Python/C+\n研究描述:该研究旨在通过优化深度学习模型,提高自然语言处理任务的准确性和效\n+进行高性能算法实现,熟悉\n率。\n常见排序、查找、图论、动态\n个人职责:负责模型设计与实现,数据预处理,参数调优及结果分析。\n规划等算法及其优化实践;精\n研究成果:通过改进的CNN-RNN模型结构,成功将文本分类的准确率提升了15%,\n通SVM、决策树、随机森林、\n达到92%的准确率。\nXGBoost等机器学习算法,熟\n悉深度学习原理,熟练使用Te\nnsorFlow/PyTorch 构建神经\n技能证书\n网络模型, 具备CNN 、 RN\n:项目管理师(PMP)\nN 、Transformer 等模型训练\n技能: Visio,SPSS,Xmind,PowerPoint,Excel,Word\n与调优经验。\n语言: 普通话(母语),英语(流利),法语\n核心优势:具备较强的工程实\n: 吉他,钢琴,音乐,绘画\n现能力和复杂问题建模能力,\n拥有丰富模型评估、交叉验证\n和A/B测试经验,2024年6月-\n2025年6月在科大讯飞人工智\n能工程师实习经历,熟悉算法\n工程师工作流程。\n综合素质:2024年本科毕业于\n清华大学,年龄24岁,年轻有\n活力,具备良好的学习能力和"
+  },
+  "tags": {
+    "industries": [],
+    "pos_types": [
+      {
+        "tag_name": "算法工程师",
+        "tag_weight": 1.8195931005405426
+      },
+      {
+        "tag_name": "高级软件工程师",
+        "tag_weight": 0.3778628862024161
+      },
+      {
+        "tag_name": "软件工程师",
+        "tag_weight": 0.3550171959887306
+      },
+      {
+        "tag_name": "其他",
+        "tag_weight": 0.28068938019944467
+      },
+      {
+        "tag_name": "技术总监/经理",
+        "tag_weight": 0.054442603111267085
+      }
+    ],
+    "pos_tags": [
+      {
+        "tag_name": "算法工程师",
+        "tag_weight": 1.2
+      },
+      {
+        "tag_name": "人脸识别算法工程师",
+        "tag_weight": 0.2722130155563354
+      },
+      {
+        "tag_name": "机器学习算法工程师",
+        "tag_weight": 0.2717590999603271
+      },
+      {
+        "tag_name": "高级图像算法工程师",
+        "tag_weight": 0.2707997488975525
+      },
+      {
+        "tag_name": "高级算法工程师",
+        "tag_weight": 0.2699138259887695
+      },
+      {
+        "tag_name": "反作弊算法工程师",
+        "tag_weight": 0.2691813254356384
+      },
+      {
+        "tag_name": "人工智能算法工程师",
+        "tag_weight": 0.26868923664093014
+      },
+      {
+        "tag_name": "图像识别",
+        "tag_weight": 0.26795786724090576
+      },
+      {
+        "tag_name": "高级图像处理算法工程师",
+        "tag_weight": 0.2675644469261169
+      },
+      {
+        "tag_name": "深度学习算法工程师",
+        "tag_weight": 0.26733083724975587
+      }
+    ],
+    "skills_tags": [
+      {
+        "tag_name": "算法",
+        "tag_weight": 1.627651586532593
+      },
+      {
+        "tag_name": "自然语言处理",
+        "tag_weight": 0.623526430130005
+      },
+      {
+        "tag_name": "算法设计",
+        "tag_weight": 0.6218599796295167
+      },
+      {
+        "tag_name": "python",
+        "tag_weight": 0.603731918334961
+      },
+      {
+        "tag_name": "深度学习",
+        "tag_weight": 0.5350902080535889
+      },
+      {
+        "tag_name": "工程师",
+        "tag_weight": 0.3297613763809204
+      },
+      {
+        "tag_name": "图像识别",
+        "tag_weight": 0.22000000000000003
+      },
+      {
+        "tag_name": "法语",
+        "tag_weight": 0.08628889322280885
+      }
+    ]
+  },
+  "eval": {
+    "salary": 27400
+  },
+  "profiler_result": {
+    "basic": [
+      {
+        "tag": "男",
+        "type": "gender"
+      },
+      {
+        "tag": "20-25岁",
+        "type": "age"
+      },
+      {
+        "tag": "无工作经验",
+        "type": "experience"
+      },
+      {
+        "tag": "期望30-50K",
+        "type": "expect_salary"
+      }
+    ],
+    "education": [
+      {
+        "tag": "本科学历",
+        "type": "degree"
+      },
+      {
+        "tag": "应届生",
+        "type": "graduate"
+      },
+      {
+        "tag": "人工智能专业",
+        "type": "major"
+      },
+      {
+        "tag": "清华大学",
+        "type": "college"
+      },
+      {
+        "tag": "TOP2院校",
+        "type": "college_level"
+      },
+      {
+        "tag": "985院校",
+        "type": "college_level"
+      }
+    ],
+    "job_exp": [
+      {
+        "tag": "人工智能工程师",
+        "type": "position"
+      },
+      {
+        "tag": "建筑/房地产-建筑工程-公路/桥梁/港口/隧道工程",
+        "type": "position_type"
+      },
+      {
+        "tag": "互联网技术-人工智能-算法工程师",
+        "type": "position_type"
+      },
+      {
+        "tag": "专业服务/教育/培训-教育/培训/院校",
+        "type": "industry"
+      },
+      {
+        "tag": "专业服务/教育/培训-学术/科研",
+        "type": "industry"
+      },
+      {
+        "tag": "政府/非营利组织/其他-政府/公共事业",
+        "type": "industry"
+      },
+      {
+        "tag": "政府/非营利组织/其他-多元化业务集团公司",
+        "type": "industry"
+      }
+    ],
+    "skills": {
+      "job_skills": [
+        {
+          "tag": "深度学习模型",
+          "type": "人工智能",
+          "weight": 88
+        },
+        {
+          "tag": "算法",
+          "type": "人工智能",
+          "weight": 86
+        },
+        {
+          "tag": "模型训练",
+          "type": "人工智能",
+          "weight": 84
+        },
+        {
+          "tag": "算法实现",
+          "type": "人工智能",
+          "weight": 82
+        },
+        {
+          "tag": "数据预处理",
+          "type": "人工智能",
+          "weight": 81
+        },
+        {
+          "tag": "网络模型",
+          "type": "后端开发",
+          "weight": 79
+        },
+        {
+          "tag": "算法设计",
+          "type": "人工智能",
+          "weight": 77
+        },
+        {
+          "tag": "自然语言处理",
+          "type": "人工智能",
+          "weight": 75
+        },
+        {
+          "tag": "识别算法",
+          "type": "人工智能",
+          "weight": 74
+        },
+        {
+          "tag": "CNN",
+          "type": "人工智能",
+          "weight": 71
+        },
+        {
+          "tag": "TensorFlow",
+          "type": "人工智能",
+          "weight": 70
+        },
+        {
+          "tag": "Python",
+          "type": "后端开发",
+          "weight": 67
+        },
+        {
+          "tag": "数据结构",
+          "type": "后端开发",
+          "weight": 63
+        },
+        {
+          "tag": "人工智能",
+          "type": "人工智能",
+          "weight": 62
+        },
+        {
+          "tag": "预处理",
+          "type": "化工",
+          "weight": 61
+        },
+        {
+          "tag": "模型设计",
+          "type": "后端开发",
+          "weight": 55
+        },
+        {
+          "tag": "智能语音",
+          "type": "销售人员",
+          "weight": 52
+        },
+        {
+          "tag": "处理数据",
+          "type": "数据",
+          "weight": 47
+        }
+      ],
+      "soft_skills": [
+        {
+          "tag": "学习能力"
+        }
+      ],
+      "hobbies": [
+        {
+          "tag": "音乐"
+        },
+        {
+          "tag": "绘画"
+        }
+      ],
+      "languages": [
+        {
+          "tag": "普通话"
+        },
+        {
+          "tag": "英语"
+        },
+        {
+          "tag": "法语"
+        }
+      ],
+      "certificates": [
+        {
+          "tag": "项目管理师(PMP)"
+        }
+      ],
+      "awards": []
+    },
+    "stability": {
+      "average_job_time": 0,
+      "average_job_type_time": 0,
+      "average_industry_time": 0,
+      "long_job_time_num": 0,
+      "short_job_time_num": 0,
+      "job_stability": ""
+    },
+    "capacity": {
+      "education": 100,
+      "honor": 10,
+      "language": 60,
+      "management": 10,
+      "job_exp": 64,
+      "social_exp": 30
+    },
+    "predicted_pos_types": [
+      {
+        "c1": "建筑/房地产",
+        "c2": "建筑工程",
+        "c3": "公路/桥梁/港口/隧道工程",
+        "weight": 12
+      },
+      {
+        "c1": "互联网技术",
+        "c2": "人工智能",
+        "c3": "算法工程师",
+        "weight": 11
+      }
+    ],
+    "predicted_industries_c1": [
+      {
+        "c1": "专业服务/教育/培训",
+        "weight": 76
+      },
+      {
+        "c1": "政府/非营利组织/其他",
+        "weight": 23
+      },
+      {
+        "c1": "房地产/建筑",
+        "weight": 0
+      },
+      {
+        "c1": "会计/金融/银行/保险",
+        "weight": 0
+      },
+      {
+        "c1": "物流/运输",
+        "weight": 0
+      },
+      {
+        "c1": "服务业",
+        "weight": 0
+      },
+      {
+        "c1": "制药/医疗",
+        "weight": 0
+      },
+      {
+        "c1": "计算机/互联网/通信/电子",
+        "weight": 0
+      },
+      {
+        "c1": "贸易/消费/制造/营运",
+        "weight": 0
+      },
+      {
+        "c1": "广告/媒体",
+        "weight": 0
+      },
+      {
+        "c1": "能源/环保/化工",
+        "weight": 0
+      }
+    ],
+    "predicted_industries_c2": [
+      {
+        "c1": "专业服务/教育/培训",
+        "c2": "教育/培训/院校",
+        "weight": 27
+      },
+      {
+        "c1": "专业服务/教育/培训",
+        "c2": "学术/科研",
+        "weight": 19
+      },
+      {
+        "c1": "政府/非营利组织/其他",
+        "c2": "政府/公共事业",
+        "weight": 8
+      },
+      {
+        "c1": "政府/非营利组织/其他",
+        "c2": "多元化业务集团公司",
+        "weight": 6
+      }
+    ],
+    "predicted_salary": "20-30K",
+    "highlights": [
+      {
+        "title": "实习经验丰富",
+        "content": "【较丰富】的实习经验：应届生, 毕业前有过【2段】实习或者工作经历",
+        "type": "job_exp"
+      },
+      {
+        "title": "技能丰富",
+        "content": "【很丰富】的【人工智能】经验：在深度学习模型、算法、模型训练、算法实现、数据预处理、算法设计、自然语言处理、识别算法、CNN、TensorFlow、人工智能等技能上有深入的理解",
+        "type": "job_exp"
+      },
+      {
+        "title": "TOP2院校",
+        "content": "【非常不错】的教育背景：本科学历，毕业于【TOP2院校】",
+        "type": "education"
+      }
+    ],
+    "risks": []
+  }
+}
