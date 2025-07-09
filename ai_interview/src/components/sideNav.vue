@@ -25,7 +25,7 @@
         </t-menu-item>
         <div style="height: 10px;"></div>
 
-        <t-menu-item value="3" to="/interviewRecord" class="menu-item">
+        <t-menu-item value="3" to="/record" class="menu-item">
           <template #icon>
             <t-icon name="chart" class="menu-icon" />
           </template>
@@ -38,16 +38,25 @@
           <template #icon>
             <t-icon name="book" class="menu-icon" />
           </template>
-          个性化习题推荐
+          个性化问答题推荐
         </t-menu-item>
 
         <div style="height: 10px;"></div>
         
-        <t-menu-item value="5" class="menu-item">
+        <t-menu-item value="5" to="/resource" class="menu-item">
           <template #icon>
             <t-icon name="star" class="menu-icon" />
           </template>
-          智能推荐
+          学习资源智能推荐
+        </t-menu-item>
+
+        <div style="height: 10px;"></div>
+
+        <t-menu-item value="6" to="/question" class="menu-item">
+          <template #icon>
+            <t-icon name="questionnaire" class="menu-icon" />
+          </template>
+          岗位题库
         </t-menu-item>
       </t-menu-group>
 
@@ -187,9 +196,13 @@ onMounted(() => {
   } else if (pageStore.pageIndex === '2') {
     router.push('/resume');
   } else if (pageStore.pageIndex === '3') {
-    router.push('/interviewRecord');
+    router.push('/record');
   } else if (pageStore.pageIndex === '4') {
     router.push('/exercise');
+  } else if (pageStore.pageIndex === '5') {
+    router.push('/resource');
+  } else if (pageStore.pageIndex === '6') {
+    router.push('/question'); 
   }
 });
 </script>

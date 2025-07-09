@@ -51,61 +51,71 @@
             "round": 1,
             "audio_analysis": "面试者语速为150词/分钟，较为适中，但停顿次数达8次，停顿时间占比0.28，停顿较多，平均音高1445.41Hz较高，语音情绪为“surprise”，可能表现出紧张。语言表达中使用了较多语气词，逻辑关系不够紧密。",
             "video_analysis": "面部表情正向，能保持良好的眼神交流，视觉反馈较好。",
-            "text_analysis": "语言结构较清晰，介绍了自身专业、成绩、项目经验等，但存在表述不够准确的问题，如“丰富的数据，可视化项目经验”表述不通顺。"
+            "text_analysis": "语言结构较清晰，介绍了自身专业、成绩、项目经验等，但存在表述不够准确的问题，如“丰富的数据，可视化项目经验”表述不通顺。",
+            "question_analysis": "测试内容"
         },
         {
             "round": 2,
             "audio_analysis": "语速150词/分钟稳定，停顿次数5次，停顿时间占比0.29，平均音高1404.97Hz，语音情绪为“sad”，状态不够积极。回答中有停顿和语气词，逻辑表达尚可。",
             "video_analysis": "面部表情不够正向，眼神交流良好。",
-            "text_analysis": "语言结构较清晰，提及了对框架的掌握和项目应用，但存在表述错误，如“Voe”“VR”等，影响专业性。"
+            "text_analysis": "语言结构较清晰，提及了对框架的掌握和项目应用，但存在表述错误，如“Voe”“VR”等，影响专业性。",
+            "question_analysis": "测试内容"
         },
         {
             "round": 3,
             "audio_analysis": "语速150词/分钟，停顿次数3次，停顿时间占比0.33，平均音高1285.44Hz，语音情绪为“surprise”，表达有起伏。内容逻辑较清晰，但停顿稍多。",
             "video_analysis": "面部表情正向，眼神交流好。",
-            "text_analysis": "语言简洁，提到了性能优化的方法，但表述不够详细，如“虚拟动地”可能是口误。"
+            "text_analysis": "语言简洁，提到了性能优化的方法，但表述不够详细，如“虚拟动地”可能是口误。",
+            "question_analysis": "测试内容"
         },
         {
             "round": 4,
             "audio_analysis": "语速稳定，停顿次数3次，停顿时间占比0.39，平均音高1374.54Hz，语音情绪为“sad”，情绪不够积极。回答有停顿和语气词，逻辑较清晰。",
             "video_analysis": "面部表情正向，眼神交流良好。",
-            "text_analysis": "语言结构清晰，说明了版本冲突的解决方法，但表述存在错误，如“young look”“young呃 di trooper”。"
+            "text_analysis": "语言结构清晰，说明了版本冲突的解决方法，但表述存在错误，如“young look”“young呃 di trooper”。",
+            "question_analysis": "测试内容"
         },
         {
             "round": 5,
             "audio_analysis": "语速150词/分钟，停顿次数5次，停顿时间占比0.31，平均音高1382.84Hz，语音情绪为“sad”，情绪不高涨。表达有停顿和语气词，逻辑关系较清晰。",
             "video_analysis": "面部表情正向，眼神交流好。",
-            "text_analysis": "语言结构合理，详细说明了确保代码兼容性的方法，内容较专业。"
+            "text_analysis": "语言结构合理，详细说明了确保代码兼容性的方法，内容较专业。",
+            "question_analysis": "测试内容"
         },
         {
             "round": 6,
             "audio_analysis": "语速不变，停顿次数2次，停顿时间占比0.45，平均音高1314.22Hz，语音情绪为“sad”，回答较简短，停顿较多。",
             "video_analysis": "面部表情不够正向，眼神交流良好。",
-            "text_analysis": "语言简洁，说明了版本管理方法，但过于简略。"
+            "text_analysis": "语言简洁，说明了版本管理方法，但过于简略。",
+            "question_analysis": "测试内容"
         },
         {
             "round": 7,
             "audio_analysis": "语速稳定，停顿次数4次，停顿时间占比0.49，平均音高1258.89Hz，语音情绪为“surprise”，停顿较多。",
             "video_analysis": "面部表情正向，但眼神交流不够好。",
-            "text_analysis": "语言结构较清晰，说明了确保代码可维护性和可扩展性的方法。"
+            "text_analysis": "语言结构较清晰，说明了确保代码可维护性和可扩展性的方法。",
+            "question_analysis": "测试内容"
         },
         {
             "round": 8,
             "audio_analysis": "语速150词/分钟，停顿次数2次，停顿时间占比0.35，平均音高1344.88Hz，语音情绪为“sad”，回答较流畅但情绪不积极。",
             "video_analysis": "面部表情正向，眼神交流良好。",
-            "text_analysis": "语言结构清晰，进一步说明了确保代码可维护性和可扩展性的方法。"
+            "text_analysis": "语言结构清晰，进一步说明了确保代码可维护性和可扩展性的方法。",
+            "question_analysis": "测试内容"
         },
         {
             "round": 9,
             "audio_analysis": "语速稳定，停顿次数3次，停顿时间占比0.33，平均音高1491.04Hz，语音情绪为“sad”，表达有停顿。",
             "video_analysis": "面部表情不够正向，眼神交流好。",
-            "text_analysis": "语言结构较清晰，说明了前端安全防范方法，但表述存在错误，如“xs”“CSI f”。"
+            "text_analysis": "语言结构较清晰，说明了前端安全防范方法，但表述存在错误，如“xs”“CSI f”。",
+            "question_analysis": "测试内容"
         },
         {
             "round": 10,
             "audio_analysis": "语速150词/分钟，停顿次数2次，停顿时间占比0.31，平均音高1441.19Hz，语音情绪为“surprise”，表达较流畅。",
             "video_analysis": "面部表情不够正向，眼神交流良好。",
-            "text_analysis": "语言结构清晰，说明了其他前端性能优化方法。"
+            "text_analysis": "语言结构清晰，说明了其他前端性能优化方法。",
+            "question_analysis": "测试内容"
         }
     ],
     "multimodal_signal_summary": {
@@ -149,5 +159,38 @@
             "ability": "眼神交流",
             "evidence": "在面试过程中能保持良好的眼神交流，展现出较好的专注度。"
         }
-    ]
+    ],
+    "learning_path": [
+    {
+      "stage": "基础强化阶段",
+      "target_skills": ["前端基础语法", "React/Vue 框架理解", "代码可读性"],
+      "improvements": ["减少语音中口头禅", "规范代码结构", "加强基础算法训练"],
+      "recommended_practice": ["每日1道 LeetCode 简单题", "搭建一个简单的 Todo 应用"],
+      "resources": [
+        {"name": "MDN 前端开发指南", "url": "https://developer.mozilla.org/zh-CN/"},
+        {"name": "Vue 官方文档", "url": "https://cn.vuejs.org/"},
+        {"name": "React 官方文档", "url": "https://react.dev/"}
+      ]
+    },
+    {
+      "stage": "进阶提升阶段",
+      "target_skills": ["性能优化", "组件化设计", "版本管理"],
+      "improvements": ["掌握懒加载、代码分割", "提高团队协作意识"],
+      "recommended_practice": ["重构已有项目，按需加载", "团队协作开发练习"],
+      "resources": [
+        {"name": "前端性能优化最佳实践", "url": "https://web.dev/fast/"},
+        {"name": "Git 官方教程", "url": "https://git-scm.com/doc"}
+      ]
+    },
+    {
+      "stage": "综合实战阶段",
+      "target_skills": ["安全防护", "跨浏览器兼容", "大型项目架构设计"],
+      "improvements": ["加强 XSS/CSRF 防护能力", "提升可维护性与扩展性"],
+      "recommended_practice": ["实现一个多浏览器兼容的响应式网站", "模拟真实业务项目开发"],
+      "resources": [
+        {"name": "OWASP 前端安全指南", "url": "https://owasp.org/www-project-top-ten/"},
+        {"name": "前端架构设计思路", "url": "https://juejin.cn/post/6844904126470146062"}
+      ]
+    }
+  ]
 }

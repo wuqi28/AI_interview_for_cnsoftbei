@@ -1,5 +1,11 @@
 <template>
   <div class="exercise-page">
+    <div style="margin-bottom: 20px;">
+      <t-breadcrumb>
+        <t-breadcrumb-item to="/">首页</t-breadcrumb-item>
+        <t-breadcrumb-item>个性化问答题推荐</t-breadcrumb-item>
+      </t-breadcrumb>
+    </div>
     <t-layout class="app-layout">
       <!-- Content 区域 -->
       <t-content class="app-content">
@@ -137,12 +143,12 @@ const clearAllQuestions = () => {
 
 <style scoped>
 .exercise-page {
-    background-color: rgb(245, 247, 250);
-    min-height: 100vh;
-    padding: 20px;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
+  background-color: rgb(245, 247, 250);
+  min-height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
 }
 
 .app-header {

@@ -11,7 +11,7 @@ from exts import api
 from result import R
 from status import SUCCESS, ERROR, baseURL
 import fitz  # PyMuPDF
-from resume_sdk import resume_pdf_to_json, resume_json_to_markdown
+from resume_sdk import resume_pdf_to_json, resume_json_to_markdown, resume_draw
 from io import BytesIO
 import requests
 from werkzeug.datastructures import FileStorage
@@ -293,6 +293,8 @@ def resume_match_job():
         raw_text = result['data']['data']['outputs']['text']
         job_list = json.loads(raw_text)
 
+        print(job_list)
+
         job_list.sort(key=lambda x: x.get("similarity", 0), reverse=True)
 
         return R(code=SUCCESS, message="岗位匹配成功", data=job_list)
@@ -332,3 +334,44 @@ def get_resume_md():
 
     except Exception as e:
         return R(code=ERROR, message="读取出错", data=str(e))
+
+
+@bp.route('/draw_resume', methods=["GET"])
+def draw_resume():
+    email = request.args.get("email")
+    name = request.args.get("name")
+
+    if not email or not name:
+        return R(code=400, message="缺少 email 或 name 参数", data=None)
+
+    resume_dir = os.path.join(current_app.root_path, "static", email)
+    file_path = os.path.join(resume_dir, name)
+
+    if not os.path.isfile(file_path):
+        return R(code=404, message="简历文件不存在", data=None)
+
+    base_name = os.path.splitext(name)[0]
+    draw_json_path = os.path.join(resume_dir, base_name + "-draw.json")
+
+    # 如果已经存在结果文件，直接读取
+    if os.path.isfile(draw_json_path):
+        try:
+            with open(draw_json_path, "r", encoding="utf-8") as f:
+                content = json.load(f)
+            return R(code=200, message="读取成功", data=content)
+        except Exception as e:
+            return R(code=500, message=f"读取 draw.json 失败: {str(e)}", data=None)
+
+    # 否则调用 resume_draw 方法生成
+    result = resume_draw(file_path)
+
+    if not isinstance(result, dict) or result.get("status", {}).get("code") != 200:
+        return R(code=500, message="resume_draw 解析失败", data=result)
+
+    try:
+        with open(draw_json_path, "w", encoding="utf-8") as f:
+            json.dump(result, f, ensure_ascii=False, indent=2)
+    except Exception as e:
+        return R(code=500, message=f"保存 draw.json 失败: {str(e)}", data=None)
+
+    return R(code=200, message="简历解析成功", data=result)

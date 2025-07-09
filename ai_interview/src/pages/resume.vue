@@ -7,7 +7,9 @@ import { ThumbUpIcon, ChatIcon, ShareIcon, MoreIcon, BrowseIcon, TimeIcon, FileI
 import { MessagePlugin } from 'tdesign-vue-next';
 import VuePdfEmbed from 'vue-pdf-embed'
 import { useUserStore } from '@/stores/userStore';
+import { useRouter } from 'vue-router'
 
+const router = useRouter();
 
 const userStore = useUserStore();
 const resumeStore = useResumeStore();
@@ -88,8 +90,11 @@ const options = [
 
 // 点击选项后的处理逻辑
 const clickHandler = (data, resume) => {
-    MessagePlugin.success(`选中【${data.content}】`);
-    console.log(resume)
+    // MessagePlugin.success(`选中【${data.content}】`);
+    if(data.value == 1) {
+        // console.log(resume.name)
+        router.push({ path: '/resume_draw', query: { name: resume.name } });
+    }
 };
 
 const handlePreview = (url) => {
@@ -228,11 +233,11 @@ const generateResume = async () => {
     </t-dialog> -->
 
     <div class="resume-page">
-        <div class="breadcrumb">
-            <el-breadcrumb separator="/">
-                <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-                <el-breadcrumb-item>个人简历</el-breadcrumb-item>
-            </el-breadcrumb>
+        <div>
+            <t-breadcrumb>
+                <t-breadcrumb-item to="/">首页</t-breadcrumb-item>
+                <t-breadcrumb-item>AI简历生成</t-breadcrumb-item>
+            </t-breadcrumb>
         </div>
 
         <div style="height: 20px;"></div>

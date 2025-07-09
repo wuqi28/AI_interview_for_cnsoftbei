@@ -15,6 +15,7 @@ from models import UserModel, InterviewRecordModel, InterviewTurnModel
 from interviewer import chat_with_spark, parse_spark_stream, get_system_prompt, get_parsing_prompt, chat_with_qwen, \
     get_answer_prompt, optimize_speaker_answer
 from generate_report import generate_interview_evaluation
+from generate_resource import call_dify_workflow_resource
 
 bp = Blueprint("interview", __name__, url_prefix="/interview")
 api.init_app(bp)
@@ -162,6 +163,93 @@ def start_interview():
     })
 
 
+# @bp.route("/chat_with_interviewer", methods=["POST"])
+# def chat_with_interviewer():
+#     interview_round = request.form.get("round")
+#     email = request.form.get("email")
+#     current_interview_id = request.form.get("current_interview_id")
+#     question_type = request.form.get("question_type")
+#     # final_transcript = request.form.get("final_transcript")
+#     old_history = request.form.get("history")
+#     face_emotion = request.form.get("face_emotion")
+#     looking_at_screen = request.form.get("looking_at_screen")
+#     ai_time = request.form.get("ai_time")
+#     speaker_time = request.form.get("speaker_time")
+#     average_bearing_degrees = request.form.get("average_bearing_degrees")
+#     average_gaze_strength = request.form.get("average_gaze_strength")
+#     old_history = json.loads(old_history)
+#
+#     # print(f"当前情绪:{face_emotion}")
+#     # print(f"当前情绪:{looking_at_screen}")
+#
+#     file = request.files.get("file")
+#     if file is None or file.filename == '':
+#         return R(code=400, message="未上传音频文件", data=None)
+#
+#     if not file.filename.lower().endswith(".wav"):
+#         return R(code=400, message="只支持 .wav 格式音频", data=None)
+#
+#     # 构建保存路径
+#     save_path = os.path.join(current_app.root_path, "static", email, current_interview_id)
+#     os.makedirs(save_path, exist_ok=True)
+#
+#     # 保存音频文件为 voice_{时间戳}.wav
+#     timestamp = datetime.now().strftime("%Y%m%d%H%M%S")
+#     filename = secure_filename(f"voice_{timestamp}.wav")
+#     file_path = os.path.join(save_path, filename)
+#     file.save(file_path)
+#
+#     # 构建 data.json 的路径
+#     data_path = os.path.join(current_app.root_path, "static", email, current_interview_id, "data.json")
+#
+#     # 检查文件是否存在
+#     if not os.path.exists(data_path):
+#         return R(code=404, message="data.json 不存在", data=None)
+#
+#     # 读取并解析 JSON 内容
+#     with open(data_path, "r", encoding="utf-8") as f:
+#         json_data = json.load(f)
+#
+#     prompt = get_system_prompt(json_data.get('interviewerConfig').get('interviewerName'),
+#                                json_data.get('job').get('company'),
+#                                json_data.get('job').get('title'),
+#                                json_data.get('resumeMarkdown'),
+#                                json_data.get('interviewerConfig').get('styleValue'),
+#                                json_data.get('job').get('description'),
+#                                question_type)
+#
+#     final_transcript = video_to_text(file_path)
+#
+#     # print(old_history)
+#
+#     thread = threading.Thread(target=async_task, args=(current_app._get_current_object(),
+#                                                        file_path,
+#                                                        get_interview_id_by_current_id(current_interview_id),
+#                                                        ai_time,
+#                                                        speaker_time,
+#                                                        to_bool(face_emotion),
+#                                                        to_bool(looking_at_screen),
+#                                                        old_history[-1]["content"],
+#                                                        final_transcript,
+#                                                        average_bearing_degrees,
+#                                                        average_gaze_strength,
+#                                                        interview_round
+#                                                        ))
+#     thread.start()
+#
+#     print(final_transcript)
+#     raw_response, new_history = chat_with_spark(prompt, final_transcript, old_history)
+#     assistant_reply = parse_spark_stream(raw_response)
+#     print(assistant_reply)
+#     new_history.append(assistant_reply)
+#
+#     return R(code=SUCCESS, message=None, data={
+#         "current_interview_id": current_interview_id,
+#         "saved_voice_filename": filename,
+#         "history": new_history
+#     })
+
+
 @bp.route("/chat_with_interviewer", methods=["POST"])
 def chat_with_interviewer():
     interview_round = request.form.get("round")
@@ -237,15 +325,16 @@ def chat_with_interviewer():
     thread.start()
 
     print(final_transcript)
-    raw_response, new_history = chat_with_spark(prompt, final_transcript, old_history)
+    raw_response, new_history = chat_with_spark(prompt, "请根据提示词要求直接提问")
     assistant_reply = parse_spark_stream(raw_response)
     print(assistant_reply)
-    new_history.append(assistant_reply)
+    old_history.append({"role": "user", "content": final_transcript})
+    old_history.append(assistant_reply)
 
     return R(code=SUCCESS, message=None, data={
         "current_interview_id": current_interview_id,
         "saved_voice_filename": filename,
-        "history": new_history
+        "history": old_history
     })
 
 
@@ -385,6 +474,18 @@ def get_interview_report():
     except Exception as e:
         return R(code=500, message=f"读取评测报告失败: {str(e)}", data=None)
 
+    # 🔽 读取 data.json 获取 job_type
+    data_path = os.path.join(current_app.root_path, "static", email, current_interview_id, "data.json")
+    if os.path.isfile(data_path):
+        try:
+            with open(data_path, "r", encoding="utf-8") as f:
+                data_json = json.load(f)
+                job_type = data_json.get("job", {}).get("type")
+                if job_type:
+                    report_data["job_type"] = job_type
+        except Exception as e:
+            return R(code=500, message=f"读取 data.json 失败: {str(e)}", data=None)
+
     # 构建 round 对应的发言与音频映射
     turn_map = {
         i + 1: {
@@ -447,4 +548,15 @@ def generate_questions():
     parsed_json = json.loads(cleaned_text)
     result['data']['outputs']['text'] = parsed_json
 
+    return result
+
+
+@bp.route('/generate_resource', methods=['POST'])
+def generate_resource():
+    data = request.get_json()
+    print(data.get('knowledgePoints'))
+    result = call_dify_workflow_resource(
+        knowledgePoints=data.get('knowledgePoints')
+    )
+    print(result)
     return result

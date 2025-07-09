@@ -149,6 +149,17 @@
                 @change="handlePositionChange">
                 <t-option value="前端工程师" label="前端工程师" />
                 <t-option value="后端工程师" label="后端工程师" />
+                <t-option value="人工智能-算法工程师" label="人工智能 - 算法工程师" />
+                <t-option value="人工智能-计算机视觉工程师" label="人工智能 - 计算机视觉工程师" />
+                <t-option value="人工智能-NLP工程师" label="人工智能 - NLP工程师" />
+                <t-option value="大数据-数据开发工程师" label="大数据 - 数据开发工程师" />
+                <t-option value="大数据-数据分析师" label="大数据 - 数据分析师" />
+                <t-option value="物联网-嵌入式工程师" label="物联网 - 嵌入式工程师" />
+                <t-option value="物联网-物联网平台开发工程师" label="物联网 - 物联网平台开发工程师" />
+                <t-option value="智能系统-智能制造工程师" label="智能系统 - 智能制造工程师" />
+                <t-option value="智能系统-智能家居工程师" label="智能系统 - 智能家居工程师" />
+                <t-option value="运维测试岗" label="运维测试岗" />
+                <t-option value="产品岗" label="产品岗" />
               </t-select>
             </div>
           </t-col>
@@ -296,7 +307,7 @@ const handleInterviewRecordChange = () => {
   axiosLocal.get('/resume/get_resume_md', {
     params: {
       email: userStore.user.email,
-      current_interview_id: current_interview_id 
+      current_interview_id: current_interview_id
     }
   }).then((res) => {
     if (res.data.code === 200) {
@@ -333,6 +344,113 @@ const generateQuestions = () => {
 const knowledgeMap = {
   '前端工程师': ['HTML', 'CSS', 'JavaScript', 'Vue.js', 'React', '前端工程化', '性能优化'],
   '后端工程师': ['Java', 'Python', 'Go', '数据库', 'Redis', '微服务', '消息队列'],
+  '人工智能-算法工程师': [
+    '机器学习',
+    '深度学习',
+    '卷积神经网络',
+    '自然语言处理',
+    '推荐系统',
+    '模型优化',
+    'TensorFlow',
+    'PyTorch',
+    '数据标注'
+  ],
+  '人工智能-计算机视觉工程师': [
+    '图像处理',
+    '目标检测',
+    'OpenCV',
+    'YOLO',
+    '图像分割',
+    'GAN',
+    '卷积神经网络'
+  ],
+  '人工智能-NLP工程师': [
+    '自然语言处理',
+    '文本分类',
+    '序列标注',
+    'BERT',
+    'Transformer',
+    '情感分析',
+    '信息抽取'
+  ],
+
+  // 大数据领域
+  '大数据-数据开发工程师': [
+    'Hadoop',
+    'Spark',
+    'Flink',
+    'Hive',
+    'Kafka',
+    '数据仓库',
+    'ETL',
+    'SQL调优'
+  ],
+  '大数据-数据分析师': [
+    '数据可视化',
+    '数据挖掘',
+    '统计分析',
+    'Python',
+    'R',
+    'Tableau',
+    'PowerBI'
+  ],
+
+  // 物联网领域
+  '物联网-嵌入式工程师': [
+    'C语言',
+    '嵌入式开发',
+    'ARM架构',
+    'RTOS',
+    '硬件调试',
+    '物联网协议',
+    '传感器技术'
+  ],
+  '物联网-物联网平台开发工程师': [
+    'MQTT',
+    'CoAP',
+    '物联网平台架构',
+    '设备管理',
+    '数据采集',
+    '云平台对接'
+  ],
+
+  // 智能系统领域
+  '智能系统-智能制造工程师': [
+    'PLC',
+    'SCADA',
+    '工业机器人',
+    '自动化控制',
+    '工业以太网',
+    '工业大数据'
+  ],
+  '智能系统-智能家居工程师': [
+    '智能硬件',
+    '智能控制',
+    'ZigBee',
+    '蓝牙',
+    'HomeKit',
+    '智能场景设计'
+  ],
+
+  // 通用岗位示例
+  '运维测试岗': [
+    'Linux',
+    'Shell脚本',
+    '网络基础',
+    'Docker',
+    'Kubernetes',
+    'CI/CD',
+    '性能测试',
+    '安全测试'
+  ],
+  '产品岗': [
+    '需求分析',
+    '产品设计',
+    'Axure',
+    '竞品分析',
+    '用户调研',
+    '数据驱动设计'
+  ]
 }
 
 const availableKnowledgePoints = computed(() => {

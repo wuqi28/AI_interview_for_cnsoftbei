@@ -1,6 +1,6 @@
 <script setup lang="jsx">
 import { onMounted, ref, watch, reactive, onBeforeMount } from 'vue';
-import { Edit, Picture, Upload, Location, OfficeBuilding, Suitcase, School, CirclePlus } from '@element-plus/icons-vue';
+import { Edit, Picture, Upload, Location, OfficeBuilding, Suitcase, School, CirclePlus, ChatDotSquare} from '@element-plus/icons-vue';
 import { PlayCircleIcon, LoadingIcon } from 'tdesign-icons-vue-next';
 import Vue3MarkdownIt from 'vue3-markdown-it';
 import { BaiduMap } from 'vue-baidu-map-3x';
@@ -35,7 +35,7 @@ const prevStep = () => {
 
 // 下一步按钮点击事件处理函数
 const nextStep = () => {
-    if (activeStep.value < 3) {
+    if (activeStep.value < 4) {
         activeStep.value++;
     }
 };
@@ -46,8 +46,9 @@ watch(activeStep, (newValue) => {
         prevDisabled.value = true;
         nextDisabled.value = false;
     } else if (newValue === 3) {
+        interviewStore.setQuestionType();
         prevDisabled.value = false;
-        nextDisabled.value = true;
+        nextDisabled.value = false;
         navigator.mediaDevices.getUserMedia({ video: true, audio: true })
             .then(stream => {
                 console.log('权限已获取')
@@ -56,15 +57,27 @@ watch(activeStep, (newValue) => {
             .catch(() => {
                 console.log('权限未获取')
             })
-    } else {
+    } else if (newValue === 2){
         prevDisabled.value = false;
         nextDisabled.value = false;
+    } else if (newValue === 4){
+        prevDisabled.value = false;
+        nextDisabled.value = true; 
+        navigator.mediaDevices.getUserMedia({ video: true, audio: true })
+            .then(stream => {
+                console.log('权限已获取')
+                getDevices();
+            })
+            .catch(() => {
+                console.log('权限未获取')
+            })
     }
 });
 
 // 模拟岗位数据
 const jobs = ref([
     {
+        type: 1,
         similarity: 0,
         title: '算法工程师',
         salary: '10k-20k',
@@ -98,6 +111,7 @@ const jobs = ref([
         company: '字节跳动',
     },
     {
+        type: 1,
         similarity: 0,
         title: '前端开发工程师',
         salary: '15k-31k',
@@ -125,8 +139,9 @@ const jobs = ref([
         company: '网易'
     },
     {
+        type: 1,
         similarity: 0,
-        title: 'Java-研发专家',
+        title: 'Java研发专家',
         salary: '20k-36k·16薪',
         location: '北京',
         experience: '经验不限',
@@ -172,34 +187,9 @@ const jobs = ref([
         company: '阿里云'
     },
     {
+        type: 2,
         similarity: 0,
-        title: 'Python软件开发工程师',
-        salary: '18k-26k',
-        location: '北京',
-        experience: '经验不限',
-        education: '本科',
-        description: `## 职位描述
-
-### 岗位职责
-
-1. 负责传送接入设备（如主控单板，业务单板等）领域嵌入式软件版本的需求分析和特性设计；
-2. 负责软件架构设计、维护和软件代码编写；
-3. 负责软件代码的单元测试、静态检查、本地构建、测试环境搭建、问题定位等工作。
-
-### 岗位要求
-
-#### 业务技能要求：
-
-1. 1年及以上项目开发经验，Python等主流开发语言；
-2. 了解网络知识、Linux 配置和 Shell 使用；
-3. 了解常用的软件架构模式、基本的编程编译工具；
-4. 具有良好的沟通能力，对技术有激情，喜欢钻研，能快速接受和掌握新技术，有较强的独立、主动的学习能力。
-`,
-        company: '华为'
-    },
-    {
-        similarity: 0,
-        title: '服务器运维-算力基础设施-北京【校招】',
+        title: '服务器运维算力基础设施北京【校招】',
         salary: '15k-21k',
         location: '北京',
         experience: '在校/应届',
@@ -230,8 +220,26 @@ const jobs = ref([
         company: '字节跳动'
     },
     {
+        type: 3,
         similarity: 0,
-        title: '嵌入式工程师-物联网工程师',
+        title: '互联网产品经理',
+        salary: '20k-30k·16薪',
+        location: '北京',
+        experience: '1-3年',
+        education: '本科',
+        description: `## 岗位职责
+
+1. 深入理解目标市场和用户需求，通过多渠道收集和分析数据，为产品方向和功能提供决策支持；
+2. 与团队成员紧密合作，共同探索产品功能和用户体验的优化；
+3. 关注产品设计和用户界面，确保产品符合市场趋势和用户期望；
+4. 与研发、运营等部门紧密合作，确保产品从概念到推出各环节顺畅。
+        `,
+        company: '百度'
+    },
+    {
+        type: 1,
+        similarity: 0,
+        title: '嵌入式工程师',
         salary: '30k-50k·20薪',
         location: '北京',
         experience: '3-5年',
@@ -280,6 +288,8 @@ let lastSelectedCard = null; // 记录上一次点击的岗位卡片元素
 function handleSelect(index, event) {
     const job = jobs.value[Number(index)];
     interviewStore.setJob(job);
+    interviewStore.setJobType(job.type);
+    console.log(job);
     form.title = job.title;
     form.salary = job.salary;
     form.location = job.location;
@@ -287,7 +297,6 @@ function handleSelect(index, event) {
     form.education = job.education;
     form.description = job.description;
     form.company = job.company;
-    // console.log(form);
 
     // 获取当前DOM 元素
     const selectedCard = event?.currentTarget;
@@ -688,8 +697,9 @@ const handleStartInterview = () => {
             <el-col :span="24">
                 <!-- 修正：绑定当前步骤的值 -->
                 <el-steps :active="activeStep" simple class="steps-container">
-                    <el-step title="选择简历" :icon="Edit"/>
+                    <el-step title="选择简历" :icon="Edit" />
                     <el-step title="岗位匹配" :icon="Upload" />
+                    <el-step title="问题配置" :icon="ChatDotSquare" />
                     <el-step title="面试配置" :icon="Picture" />
                 </el-steps>
             </el-col>
@@ -699,17 +709,17 @@ const handleStartInterview = () => {
             <el-col :span="24">
                 <!-- 根据当前步骤显示不同内容 -->
                 <div v-if="activeStep === 1">
-                    <t-row justify="center" style="margin-bottom: 30px;">
+                    <!-- <t-row justify="center" style="margin-bottom: 30px;">
                         <t-col :span="12">
                             <h1 class="page-title">😎 选一份你最"得意"的简历吧，让 AI 更懂你！</h1>
                         </t-col>
-                    </t-row>
+                    </t-row> -->
 
                     <t-row justify="center" :gutter="16">
                         <t-col :span="4">
                             <t-card class="resume-list-card">
                                 <div class="resume-container">
-                                    <el-scrollbar height="75vh">
+                                    <el-scrollbar height="69.5vh">
                                         <div class="card-list">
                                             <div v-if="!userStore.user.email">{{ resumeStore.resumeMsg }}</div>
                                             <t-card v-for="resume in resumeStore.resumeList" :key="resume.name"
@@ -723,7 +733,7 @@ const handleStartInterview = () => {
                             </t-card>
                         </t-col>
                         <t-col :span="8">
-                            <MdEditor v-model="resumeMarkDown" style="height: 78.6vh;" class="md-editor-container" />
+                            <MdEditor v-model="resumeMarkDown" style="height: 73vh;" class="md-editor-container" />
                         </t-col>
                     </t-row>
                 </div>
@@ -776,7 +786,9 @@ const handleStartInterview = () => {
                                     <el-card v-for="(job, index) in jobs" :key="index" shadow="hover"
                                         @click="handleSelect(index.toString(), $event)" class="job-card">
                                         <div class="job-card-header">
-                                            <div class="job-title">{{ job.title }} <span style="color: rgb(0, 82, 217);">{{ job.similarity == 0 ? '': job.similarity + '%匹配度'}}</span></div>
+                                            <div class="job-title">{{ job.title }} <span
+                                                    style="color: rgb(0, 82, 217);">{{
+                                                        job.similarity == 0 ? '' : job.similarity + '%匹配度' }}</span></div>
                                             <div class="job-salary">{{ job.salary }}</div>
                                         </div>
                                         <div class="job-requirements">
@@ -855,7 +867,10 @@ const handleStartInterview = () => {
                         </el-col>
                     </el-row>
                 </div>
-                <div v-else>
+                <div v-else-if="activeStep === 3">
+                    <question-type-config/>
+                </div>
+                <div v-else-if="activeStep === 4">
                     <t-row :gutter="16" justify="center">
                         <t-col :span="5">
                             <t-card class="interview-info-card">
@@ -997,14 +1012,14 @@ const handleStartInterview = () => {
                                     </t-col>
                                 </t-row>
 
-                                <t-row class="config-row">
-                                    <t-col :span="1"></t-col>
-                                    <t-col :span="6" :offset="2">
+                                <t-row class="config-row" justify="center">
+                                    <!-- <t-col :span="1"></t-col> -->
+                                    <t-col>
                                         <!-- 摄像头预览 -->
                                         <video ref="videoPreview" autoplay muted playsinline width="300" height="240"
                                             class="video-preview" />
                                     </t-col>
-                                    <t-col :span="1"></t-col>
+                                    <!-- <t-col :span="1"></t-col> -->
                                 </t-row>
 
                                 <t-row class="config-row">
@@ -1520,29 +1535,33 @@ const handleStartInterview = () => {
 }
 
 .my-dots-jump-spinner .dot {
-  display: inline-block;
-  width: 16px;
-  height: 16px;
-  margin: 0 2px;
-  border-radius: 50%;
-  background-color: #409EFF;
-  animation: jump 1s infinite ease-in-out;
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin: 0 2px;
+    border-radius: 50%;
+    background-color: #409EFF;
+    animation: jump 1s infinite ease-in-out;
 }
 
 .my-dots-jump-spinner .dot:nth-child(2) {
-  animation-delay: 0.2s;
+    animation-delay: 0.2s;
 }
+
 .my-dots-jump-spinner .dot:nth-child(3) {
-  animation-delay: 0.4s;
+    animation-delay: 0.4s;
 }
 
 @keyframes jump {
-  0%, 80%, 100% {
-    transform: scaleY(1);
-  }
-  40% {
-    transform: scaleY(1.6);
-  }
-}
 
+    0%,
+    80%,
+    100% {
+        transform: scaleY(1);
+    }
+
+    40% {
+        transform: scaleY(1.6);
+    }
+}
 </style>

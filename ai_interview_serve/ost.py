@@ -137,9 +137,9 @@ def convert_to_16k_16bit_mono(input_path, output_path):
 
 
 def video_to_text(file_path):
-    appid = "98f6f409"
-    apikey = "8b7482d1daa7cc2ff7430a932f1a7f4b"
-    apisecret = "NjRjYTNiYTZmZGU5ZTY5YmZiNDY2NGE4"
+    appid = "11f5aa88"
+    apikey = "8fc04d9905f3dd62e31dcd3512073d9a"
+    apisecret = "Y2Y1NzA1OGE0NTE3ZDE4NTc0YzFkYTVm"
 
     convert_to_16k_16bit_mono(file_path, file_path)
     xf = get_result(appid, apikey, apisecret)

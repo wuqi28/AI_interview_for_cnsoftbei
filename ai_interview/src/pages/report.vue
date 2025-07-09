@@ -33,15 +33,14 @@
                         </div>
 
                         <!-- 右侧：返回按钮 -->
-                        <t-button theme="primary" shape="square" size="large"
-                            @click="$router.push('/resume')" style="width: 56px; height: 56px;">
+                        <t-button theme="primary" shape="square" size="large" @click="$router.push('/resume')"
+                            style="width: 56px; height: 56px;">
                             <template #icon>
                                 <t-icon name="rollback" size="24px" />
                             </template>
                         </t-button>
                     </div>
                 </div>
-
 
                 <!-- 分页导航 -->
                 <div class="tab-navigation">
@@ -171,7 +170,7 @@
                                         <div class="question-block">
                                             <div class="td-tag interviewer-tag">AI面试官</div>
                                             <div class="message-bubble interviewer-bubble">{{ round.ai_interviewer_text
-                                                }}</div>
+                                            }}</div>
                                         </div>
 
                                         <div class="answer-block">
@@ -205,6 +204,17 @@
                                         </div>
                                     </div>
 
+                                    <!-- 问题知识点分析 -->
+                                    <div v-if="round.question_analysis" class="question-analysis-section">
+                                        <div class="analysis-header">
+                                            <span class="analysis-icon">🧠</span>
+                                            <span class="analysis-title">问题分析</span>
+                                        </div>
+                                        <div class="question-analysis-content">
+                                            <p class="analysis-content">{{ round.question_analysis }}</p>
+                                        </div>
+                                    </div>
+
                                     <div class="analysis-section">
                                         <div class="analysis-grid">
                                             <div class="analysis-item">
@@ -235,8 +245,465 @@
                         </div>
                     </div>
 
+                    <!-- 答案分析 - 新增的动态内容区域 -->
+                    <div v-if="activeTab === 2 && interviewStore.job_type !== 0" class="answer-analysis-section">
+                        <!-- 算法编程面试 (job_type = 1) -->
+                        <div v-if="interviewStore.job_type === 1" class="algorithm-analysis">
+                            <div class="section-header">
+                                <h3>算法编程题目分析</h3>
+                                <p class="section-description">基于您的算法编程面试表现，以下是详细的题目分析和解答思路</p>
+                            </div>
+
+                            <div class="algorithm-problems">
+                                <!-- Two Sum 问题 -->
+                                <div class="td-card problem-card">
+                                    <div class="card-header">
+                                        <div class="problem-header">
+                                            <div class="td-tag difficulty-tag beginner">初级</div>
+                                            <h4>Two Sum (两数之和)</h4>
+                                        </div>
+                                    </div>
+                                    <div class="card-content">
+                                        <div class="problem-content">
+                                            <div class="problem-description">
+                                                <h5>题目描述</h5>
+                                                <p>给定一个整数数组 nums 和一个整数目标值 target，请你在该数组中找出和为目标值 target
+                                                    的那两个整数，并返回它们的数组下标。</p>
+                                            </div>
+                                            <div class="problem-solution">
+                                                <h5>解题思路</h5>
+                                                <ul>
+                                                    <li>使用哈希表存储已遍历的数字及其索引</li>
+                                                    <li>对于每个数字，检查 target - 当前数字 是否在哈希表中</li>
+                                                    <li>时间复杂度：O(n)，空间复杂度：O(n)</li>
+                                                </ul>
+                                            </div>
+                                            <div class="code-example">
+                                                <h5>参考代码</h5>
+                                                <pre class="code-block"><code>def twoSum(nums, target):
+                                        hash_map = {}
+                                        for i, num in enumerate(nums):
+                                        complement = target - num
+                                        if complement in hash_map:
+                                        return [hash_map[complement], i]
+                                        hash_map[num] = i
+                                        return []</code></pre>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Maximum Subarray Sum 问题 -->
+                                <div class="td-card problem-card">
+                                    <div class="card-header">
+                                        <div class="problem-header">
+                                            <div class="td-tag difficulty-tag intermediate">中级</div>
+                                            <h4>Maximum Subarray Sum (最大子数组和)</h4>
+                                        </div>
+                                    </div>
+                                    <div class="card-content">
+                                        <div class="problem-content">
+                                            <div class="problem-description">
+                                                <h5>题目描述</h5>
+                                                <p>给你一个整数数组 nums，请你找出一个具有最大和的连续子数组（子数组最少包含一个元素），返回其最大和。</p>
+                                            </div>
+                                            <div class="problem-solution">
+                                                <h5>解题思路</h5>
+                                                <ul>
+                                                    <li>使用动态规划（Kadane算法）</li>
+                                                    <li>维护当前最大和与全局最大和</li>
+                                                    <li>时间复杂度：O(n)，空间复杂度：O(1)</li>
+                                                </ul>
+                                            </div>
+                                            <div class="code-example">
+                                                <h5>参考代码</h5>
+                                                <pre class="code-block"><code>def maxSubArray(nums):
+                                        max_sum = nums[0]
+                                        current_sum = nums[0]
+
+                                        for i in range(1, len(nums)):
+                                        current_sum = max(nums[i], current_sum + nums[i])
+                                        max_sum = max(max_sum, current_sum)
+
+                                        return max_sum</code></pre>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Merge Two Sorted Lists 问题 -->
+                                <div class="td-card problem-card">
+                                    <div class="card-header">
+                                        <div class="problem-header">
+                                            <div class="td-tag difficulty-tag advanced">高级</div>
+                                            <h4>Merge Two Sorted Lists (合并两个有序链表)</h4>
+                                        </div>
+                                    </div>
+                                    <div class="card-content">
+                                        <div class="problem-content">
+                                            <div class="problem-description">
+                                                <h5>题目描述</h5>
+                                                <p>将两个升序链表合并为一个新的升序链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。</p>
+                                            </div>
+                                            <div class="problem-solution">
+                                                <h5>解题思路</h5>
+                                                <ul>
+                                                    <li>使用双指针技术比较两个链表的节点</li>
+                                                    <li>创建虚拟头节点简化边界处理</li>
+                                                    <li>时间复杂度：O(m+n)，空间复杂度：O(1)</li>
+                                                </ul>
+                                            </div>
+                                            <div class="code-example">
+                                                <h5>参考代码</h5>
+                                                <pre class="code-block"><code>def mergeTwoLists(list1, list2):
+                                        dummy = ListNode(0)
+                                        current = dummy
+
+                                        while list1 and list2:
+                                        if list1.val = list2.val:
+                                        current.next = list1
+                                        list1 = list1.next
+                                        else:
+                                        current.next = list2
+                                        list2 = list2.next
+                                        current = current.next
+
+                                        current.next = list1 or list2
+                                        return dummy.next</code></pre>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- DevOps/测试面试 (job_type = 2) -->
+                        <div v-if="interviewStore.job_type === 2" class="devops-analysis">
+                            <div class="section-header">
+                                <h3>DevOps/测试场景分析</h3>
+                                <p class="section-description">基于您的DevOps和测试面试表现，以下是关键场景的处理流程和决策分析</p>
+                            </div>
+
+                            <div class="devops-scenarios">
+                                <!-- 服务器异常处理流程 -->
+                                <div class="td-card scenario-card">
+                                    <div class="card-header">
+                                        <h4>🔧 服务器异常处理流程</h4>
+                                    </div>
+                                    <div class="card-content">
+                                        <div class="process-flow">
+                                            <div class="flow-step">
+                                                <div class="step-number">1</div>
+                                                <div class="step-content">
+                                                    <h5>确认故障现象和影响范围</h5>
+                                                    <p>评估业务影响，确定处理优先级</p>
+                                                </div>
+                                            </div>
+                                            <div class="flow-arrow">↓</div>
+
+                                            <div class="flow-step">
+                                                <div class="step-number">2</div>
+                                                <div class="step-content">
+                                                    <h5>查看系统日志和监控数据</h5>
+                                                    <p>分析日志文件，检查监控指标异常</p>
+                                                </div>
+                                            </div>
+                                            <div class="flow-arrow">↓</div>
+
+                                            <div class="flow-step">
+                                                <div class="step-number">3</div>
+                                                <div class="step-content">
+                                                    <h5>定位故障根本原因</h5>
+                                                    <p>结合日志与现象，找出具体原因点</p>
+                                                </div>
+                                            </div>
+                                            <div class="flow-arrow">↓</div>
+
+                                            <div class="flow-step">
+                                                <div class="step-number">4</div>
+                                                <div class="step-content">
+                                                    <h5>制定应急处理方案</h5>
+                                                    <p>根据影响范围和故障性质确定修复策略</p>
+                                                </div>
+                                            </div>
+                                            <div class="flow-arrow">↓</div>
+
+                                            <div class="flow-step">
+                                                <div class="step-number">5</div>
+                                                <div class="step-content">
+                                                    <h5>执行故障修复操作</h5>
+                                                    <p>根据分析结果执行相应的修复措施</p>
+                                                </div>
+                                            </div>
+                                            <div class="flow-arrow">↓</div>
+
+                                            <div class="flow-step">
+                                                <div class="step-number">6</div>
+                                                <div class="step-content">
+                                                    <h5>验证修复效果</h5>
+                                                    <p>确认业务恢复正常，指标恢复合理范围</p>
+                                                </div>
+                                            </div>
+                                            <div class="flow-arrow">↓</div>
+
+                                            <div class="flow-step">
+                                                <div class="step-number">7</div>
+                                                <div class="step-content">
+                                                    <h5>编写故障处理报告</h5>
+                                                    <p>记录故障现象、影响范围、初步分析结果</p>
+                                                </div>
+                                            </div>
+                                            <div class="flow-arrow">↓</div>
+
+                                            <div class="flow-step">
+                                                <div class="step-number">8</div>
+                                                <div class="step-content">
+                                                    <h5>总结经验和改进措施</h5>
+                                                    <p>制定预防措施，优化监控和告警</p>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- 场景决策分析 -->
+                                <div class="td-card scenario-card">
+                                    <div class="card-header">
+                                        <h4>🎯 关键场景决策分析</h4>
+                                    </div>
+                                    <div class="card-content">
+                                        <div class="scenario-grid">
+                                            <div class="scenario-item">
+                                                <div class="scenario-header">
+                                                    <span class="scenario-icon">💻</span>
+                                                    <h5>CPU使用率过高</h5>
+                                                </div>
+                                                <div class="scenario-actions">
+                                                    <div class="action-item priority-high">立即重启服务器</div>
+                                                    <div class="action-item priority-medium">查看进程列表，定位高CPU占用进程</div>
+                                                    <div class="action-item priority-medium">增加服务器配置</div>
+                                                    <div class="action-item priority-low">适当用户系统维护</div>
+                                                </div>
+                                            </div>
+
+                                            <div class="scenario-item">
+                                                <div class="scenario-header">
+                                                    <span class="scenario-icon">🗄️</span>
+                                                    <h5>数据库连接异常</h5>
+                                                </div>
+                                                <div class="scenario-actions">
+                                                    <div class="action-item priority-high">检查数据库服务状态</div>
+                                                    <div class="action-item priority-high">验证网络连通性</div>
+                                                    <div class="action-item priority-medium">检查连接池配置</div>
+                                                    <div class="action-item priority-medium">查看数据库日志</div>
+                                                    <div class="action-item priority-low">重启应用服务</div>
+                                                </div>
+                                            </div>
+
+                                            <div class="scenario-item">
+                                                <div class="scenario-header">
+                                                    <span class="scenario-icon">💾</span>
+                                                    <h5>磁盘空间不足</h5>
+                                                </div>
+                                                <div class="scenario-actions">
+                                                    <div class="action-item priority-high">立即清理日志文件</div>
+                                                    <div class="action-item priority-medium">申请扩容磁盘</div>
+                                                    <div class="action-item priority-medium">迁移部分数据到其他服务器</div>
+                                                    <div class="action-item priority-low">重启服务器释放缓存</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 产品面试 (job_type = 3) -->
+                        <div v-if="interviewStore.job_type === 3" class="product-analysis">
+                            <div class="section-header">
+                                <h3>产品设计分析</h3>
+                                <p class="section-description">基于您的产品面试表现，以下是产品设计思路和功能规划的详细分析</p>
+                            </div>
+
+                            <div class="product-design">
+                                <!-- 解决方案描述 -->
+                                <div class="td-card solution-card">
+                                    <div class="card-header">
+                                        <h4>💡 解决方案描述</h4>
+                                    </div>
+                                    <div class="card-content">
+                                        <div class="solution-content">
+                                            <div class="solution-overview">
+                                                <h5>老年人健康管理App设计方案</h5>
+                                                <p>针对60+老年人群体，设计一款简单易用的健康管理应用，考虑老年人的使用习惯和身体特点，提供个性化的健康管理服务。</p>
+                                            </div>
+
+                                            <div class="design-principles">
+                                                <h5>设计原则</h5>
+                                                <div class="principles-grid">
+                                                    <div class="principle-item">
+                                                        <span class="principle-icon">👁️</span>
+                                                        <div class="principle-content">
+                                                            <h6>视觉友好</h6>
+                                                            <p>大字体、高对比度、简洁界面</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="principle-item">
+                                                        <span class="principle-icon">🤏</span>
+                                                        <div class="principle-content">
+                                                            <h6>操作简单</h6>
+                                                            <p>大按钮、少步骤、语音辅助</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="principle-item">
+                                                        <span class="principle-icon">🏥</span>
+                                                        <div class="principle-content">
+                                                            <h6>专业可靠</h6>
+                                                            <p>医疗级数据、专家建议</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="principle-item">
+                                                        <span class="principle-icon">👨‍👩‍👧‍👦</span>
+                                                        <div class="principle-content">
+                                                            <h6>家庭关怀</h6>
+                                                            <p>家属监护、紧急联系</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- 功能特性列表 -->
+                                <div class="td-card features-card">
+                                    <div class="card-header">
+                                        <h4>⭐ 核心功能特性</h4>
+                                    </div>
+                                    <div class="card-content">
+                                        <div class="features-grid">
+                                            <div class="feature-category">
+                                                <h5>健康监测</h5>
+                                                <ul class="feature-list">
+                                                    <li>血压、血糖、心率记录</li>
+                                                    <li>用药提醒和记录</li>
+                                                    <li>体重、睡眠质量跟踪</li>
+                                                    <li>健康数据可视化图表</li>
+                                                </ul>
+                                            </div>
+
+                                            <div class="feature-category">
+                                                <h5>智能提醒</h5>
+                                                <ul class="feature-list">
+                                                    <li>服药时间提醒</li>
+                                                    <li>体检预约提醒</li>
+                                                    <li>运动建议推送</li>
+                                                    <li>饮食营养建议</li>
+                                                </ul>
+                                            </div>
+
+                                            <div class="feature-category">
+                                                <h5>医疗服务</h5>
+                                                <ul class="feature-list">
+                                                    <li>在线问诊咨询</li>
+                                                    <li>附近医院导航</li>
+                                                    <li>电子病历管理</li>
+                                                    <li>专家健康讲座</li>
+                                                </ul>
+                                            </div>
+
+                                            <div class="feature-category">
+                                                <h5>社交关怀</h5>
+                                                <ul class="feature-list">
+                                                    <li>家属健康共享</li>
+                                                    <li>紧急联系功能</li>
+                                                    <li>健康社区交流</li>
+                                                    <li>志愿者服务对接</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- 用户流程图 -->
+                                <div class="td-card flowchart-card">
+                                    <div class="card-header">
+                                        <h4>📊 用户使用流程图</h4>
+                                    </div>
+                                    <div class="card-content">
+                                        <div class="flowchart-container">
+                                            <div class="flow-section">
+                                                <h5>新用户注册流程</h5>
+                                                <div class="flow-steps horizontal">
+                                                    <div class="flow-step">
+                                                        <div class="step-box">下载安装</div>
+                                                    </div>
+                                                    <div class="flow-arrow-right">→</div>
+                                                    <div class="flow-step">
+                                                        <div class="step-box">简单注册</div>
+                                                    </div>
+                                                    <div class="flow-arrow-right">→</div>
+                                                    <div class="flow-step">
+                                                        <div class="step-box">健康档案</div>
+                                                    </div>
+                                                    <div class="flow-arrow-right">→</div>
+                                                    <div class="flow-step">
+                                                        <div class="step-box">功能引导</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="flow-section">
+                                                <h5>日常使用流程</h5>
+                                                <div class="flow-steps horizontal">
+                                                    <div class="flow-step">
+                                                        <div class="step-box">打开应用</div>
+                                                    </div>
+                                                    <div class="flow-arrow-right">→</div>
+                                                    <div class="flow-step">
+                                                        <div class="step-box">查看提醒</div>
+                                                    </div>
+                                                    <div class="flow-arrow-right">→</div>
+                                                    <div class="flow-step">
+                                                        <div class="step-box">记录数据</div>
+                                                    </div>
+                                                    <div class="flow-arrow-right">→</div>
+                                                    <div class="flow-step">
+                                                        <div class="step-box">查看报告</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="flow-section">
+                                                <h5>紧急情况处理</h5>
+                                                <div class="flow-steps horizontal">
+                                                    <div class="flow-step">
+                                                        <div class="step-box">异常检测</div>
+                                                    </div>
+                                                    <div class="flow-arrow-right">→</div>
+                                                    <div class="flow-step">
+                                                        <div class="step-box">自动告警</div>
+                                                    </div>
+                                                    <div class="flow-arrow-right">→</div>
+                                                    <div class="flow-step">
+                                                        <div class="step-box">联系家属</div>
+                                                    </div>
+                                                    <div class="flow-arrow-right">→</div>
+                                                    <div class="flow-step">
+                                                        <div class="step-box">医疗救助</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     <!-- 知识点分析 -->
-                    <div v-if="activeTab === 2" class="knowledge-section">
+                    <div v-if="activeTab === 3" class="knowledge-section">
                         <div class="td-card knowledge-chart-card">
                             <div class="card-header">
                                 <h3>知识点掌握程度分析</h3>
@@ -275,7 +742,7 @@
                     </div>
 
                     <!-- 智能建议 -->
-                    <div v-if="activeTab === 3" class="suggestions-section">
+                    <div v-if="activeTab === 4" class="suggestions-section">
                         <div class="suggestions-header">
                             <h3>智能改进建议</h3>
                             <div class="filter-group">
@@ -318,8 +785,88 @@
                         </div>
                     </div>
 
+                    <!-- 学习路径规划 -->
+                    <div v-if="activeTab === 5" class="learning-path-section">
+                        <div class="learning-path-header">
+                            <h3>个性化学习路径规划</h3>
+                            <p class="learning-path-description">基于您的面试表现，为您量身定制的学习提升计划</p>
+                        </div>
+
+                        <div class="learning-stages">
+                            <div v-for="(stage, index) in reportData.learning_path" :key="index"
+                                class="td-card learning-stage-card">
+                                <div class="card-header">
+                                    <div class="stage-header">
+                                        <div class="stage-number">{{ index + 1 }}</div>
+                                        <h4>{{ stage.stage }}</h4>
+                                    </div>
+                                </div>
+                                <div class="card-content">
+                                    <div class="learning-content-grid">
+                                        <!-- 目标技能 -->
+                                        <div class="learning-block">
+                                            <div class="block-header">
+                                                <span class="block-icon">🎯</span>
+                                                <span class="block-title">目标技能</span>
+                                            </div>
+                                            <div class="skill-tags">
+                                                <div v-for="skill in stage.target_skills" :key="skill"
+                                                    class="td-tag skill-tag">
+                                                    {{ skill }}
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- 改进重点 -->
+                                        <div class="learning-block">
+                                            <div class="block-header">
+                                                <span class="block-icon">📈</span>
+                                                <span class="block-title">改进重点</span>
+                                            </div>
+                                            <ul class="improvement-list">
+                                                <li v-for="improvement in stage.improvements" :key="improvement">
+                                                    {{ improvement }}
+                                                </li>
+                                            </ul>
+                                        </div>
+
+                                        <!-- 推荐练习 -->
+                                        <div class="learning-block">
+                                            <div class="block-header">
+                                                <span class="block-icon">💪</span>
+                                                <span class="block-title">推荐练习</span>
+                                            </div>
+                                            <ul class="practice-list">
+                                                <li v-for="practice in stage.recommended_practice" :key="practice">
+                                                    {{ practice }}
+                                                </li>
+                                            </ul>
+                                        </div>
+
+                                        <!-- 学习资源 -->
+                                        <div class="learning-block resources-block">
+                                            <div class="block-header">
+                                                <span class="block-icon">📚</span>
+                                                <span class="block-title">学习资源</span>
+                                            </div>
+                                            <div class="resources-list">
+                                                <div v-for="resource in stage.resources" :key="resource.name"
+                                                    class="resource-item">
+                                                    <a :href="resource.url" target="_blank" class="resource-link">
+                                                        <span class="resource-name">{{ resource.name }}</span>
+                                                        <span class="resource-icon">🔗</span>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     <!-- 数据归档 -->
-                    <div v-if="activeTab === 4" class="export-section">
+                    <div v-if="activeTab === 6" class="export-section">
                         <div class="export-grid">
                             <div class="td-card export-card">
                                 <div class="card-header">
@@ -466,7 +1013,7 @@
                     <h2
                         style="color: #0052D9; border-bottom: 2px solid #0052D9; padding-bottom: 10px; margin-bottom: 20px;">
                         多模态表现摘要</h2>
-                    <div style="display: grid; grid-template-columns: 1fr; gap: 16px;">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
                         <div style="background: #f8f9fa; padding: 16px; border-radius: 6px;">
                             <div style="font-weight: 600; color: #0052D9; margin-bottom: 8px;">🎵 音频表现</div>
                             <p style="margin: 0; line-height: 1.6;">{{ reportData.multimodal_signal_summary?.audio ||
@@ -574,12 +1121,14 @@ const isExporting = ref(false)
 const pdfContent = ref(null)
 const optimizedAnswers = reactive({})
 
-// 分页配置
+// 分页配置 - 更新分页，在知识点分析前插入答案分析
 const tabs = [
     { name: '面试概要', icon: '📊' },
     { name: '问题分析', icon: '💬' },
+    { name: '答案分析', icon: '🎯' },
     { name: '知识点分析', icon: '📚' },
     { name: '智能建议', icon: '💡' },
+    { name: '学习路径', icon: '🎯' },
     { name: '数据归档', icon: '📁' }
 ]
 
@@ -888,7 +1437,7 @@ const handleTabChange = async () => {
     await nextTick()
     if (activeTab.value === 0) {
         initRadarChart()
-    } else if (activeTab.value === 2) {
+    } else if (activeTab.value === 3) {
         initKnowledgeChart()
     }
 }
@@ -896,11 +1445,9 @@ const handleTabChange = async () => {
 // 监听activeTab变化
 watch(() => activeTab.value, handleTabChange)
 
-// const { company, position, time } = parseInterviewId(interviewStore.current_interview_id)
-
 // 组件挂载
 onMounted(() => {
-    console.log(interviewStore.current_interview_id)
+    // console.log(interviewStore.current_interview_id)
     axiosLocal.get('/interview/get_interview_report', {
         params: {
             email: userStore.user.email,
@@ -910,6 +1457,8 @@ onMounted(() => {
         if (res.data.code == 200) {
             reportData.value = res.data.data
             console.log(reportData.value)
+
+            interviewStore.setJobType(Number(reportData.value.job_type));
 
             nextTick(() => {
                 initRadarChart()
@@ -1108,6 +1657,378 @@ onMounted(() => {
 .dimension-tag {
     background: var(--td-brand-color);
     color: white;
+}
+
+.skill-tag {
+    background: #E7F3FF;
+    color: var(--td-brand-color);
+    margin: 4px;
+}
+
+/* 答案分析新增样式 */
+.answer-analysis-section {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.section-header h3 {
+    margin: 0 0 8px 0;
+    color: var(--td-text-color-primary);
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.section-description {
+    margin: 0;
+    color: var(--td-text-color-secondary);
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+/* 算法编程样式 */
+.algorithm-problems {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.problem-card {
+    margin-bottom: 0;
+}
+
+.problem-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.difficulty-tag {
+    padding: 4px 8px;
+    font-size: 11px;
+    font-weight: 500;
+}
+
+.difficulty-tag.beginner {
+    background: #E8F5E8;
+    color: var(--td-success-color);
+}
+
+.difficulty-tag.intermediate {
+    background: #FFF3E0;
+    color: var(--td-warning-color);
+}
+
+.difficulty-tag.advanced {
+    background: #FFE7E7;
+    color: var(--td-error-color);
+}
+
+.problem-content {
+    display: grid;
+    gap: 20px;
+}
+
+.problem-description h5,
+.problem-solution h5,
+.code-example h5 {
+    margin: 0 0 8px 0;
+    color: var(--td-text-color-primary);
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.problem-description p {
+    margin: 0;
+    color: var(--td-text-color-secondary);
+    line-height: 1.6;
+}
+
+.problem-solution ul {
+    margin: 0;
+    padding-left: 16px;
+    color: var(--td-text-color-secondary);
+    line-height: 1.6;
+}
+
+.problem-solution li {
+    margin-bottom: 4px;
+}
+
+.code-block {
+    background: #1e1e1e;
+    color: #d4d4d4;
+    padding: 16px;
+    border-radius: var(--td-border-radius);
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    font-size: 13px;
+    line-height: 1.4;
+    overflow-x: auto;
+    margin: 0;
+}
+
+/* DevOps样式 */
+.devops-scenarios {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.scenario-card {
+    margin-bottom: 0;
+}
+
+.process-flow {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+}
+
+.flow-step {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: #FAFAFA;
+    padding: 16px;
+    border-radius: var(--td-border-radius);
+    border: 1px solid #F3F3F3;
+    width: 100%;
+    max-width: 600px;
+}
+
+.step-number {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--td-brand-color);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 14px;
+    flex-shrink: 0;
+}
+
+.step-content h5 {
+    margin: 0 0 4px 0;
+    color: var(--td-text-color-primary);
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.step-content p {
+    margin: 0;
+    color: var(--td-text-color-secondary);
+    font-size: 13px;
+    line-height: 1.4;
+}
+
+.flow-arrow {
+    color: var(--td-brand-color);
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.scenario-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+
+.scenario-item {
+    background: #FAFAFA;
+    padding: 16px;
+    border-radius: var(--td-border-radius);
+    border: 1px solid #F3F3F3;
+}
+
+.scenario-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.scenario-icon {
+    font-size: 16px;
+}
+
+.scenario-header h5 {
+    margin: 0;
+    color: var(--td-text-color-primary);
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.scenario-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.action-item {
+    padding: 8px 12px;
+    border-radius: var(--td-border-radius);
+    font-size: 12px;
+    line-height: 1.4;
+    border-left: 3px solid;
+}
+
+.action-item.priority-high {
+    background: #FFE7E7;
+    border-left-color: var(--td-error-color);
+    color: var(--td-error-color);
+}
+
+.action-item.priority-medium {
+    background: #FFF3E0;
+    border-left-color: var(--td-warning-color);
+    color: var(--td-warning-color);
+}
+
+.action-item.priority-low {
+    background: #E8F5E8;
+    border-left-color: var(--td-success-color);
+    color: var(--td-success-color);
+}
+
+/* 产品设计样式 */
+.product-design {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.solution-content {
+    display: grid;
+    gap: 20px;
+}
+
+.solution-overview h5 {
+    margin: 0 0 8px 0;
+    color: var(--td-text-color-primary);
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.solution-overview p {
+    margin: 0;
+    color: var(--td-text-color-secondary);
+    line-height: 1.6;
+}
+
+.design-principles h5 {
+    margin: 0 0 16px 0;
+    color: var(--td-text-color-primary);
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.principles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+}
+
+.principle-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    background: #FAFAFA;
+    padding: 12px;
+    border-radius: var(--td-border-radius);
+    border: 1px solid #F3F3F3;
+}
+
+.principle-icon {
+    font-size: 16px;
+    flex-shrink: 0;
+}
+
+.principle-content h6 {
+    margin: 0 0 4px 0;
+    color: var(--td-text-color-primary);
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.principle-content p {
+    margin: 0;
+    color: var(--td-text-color-secondary);
+    font-size: 12px;
+    line-height: 1.4;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.feature-category h5 {
+    margin: 0 0 12px 0;
+    color: var(--td-text-color-primary);
+    font-size: 14px;
+    font-weight: 500;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--td-brand-color);
+}
+
+.feature-list {
+    margin: 0;
+    padding-left: 16px;
+    color: var(--td-text-color-secondary);
+    line-height: 1.6;
+}
+
+.feature-list li {
+    margin-bottom: 6px;
+    font-size: 13px;
+}
+
+.flowchart-container {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.flow-section h5 {
+    margin: 0 0 16px 0;
+    color: var(--td-text-color-primary);
+    font-size: 14px;
+    font-weight: 500;
+    text-align: center;
+}
+
+.flow-steps.horizontal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.step-box {
+    background: var(--td-brand-color-light);
+    color: var(--td-brand-color);
+    padding: 8px 12px;
+    border-radius: var(--td-border-radius);
+    font-size: 12px;
+    font-weight: 500;
+    white-space: nowrap;
+    border: 1px solid #CCE7FF;
+}
+
+.flow-arrow-right {
+    color: var(--td-brand-color);
+    font-size: 16px;
+    font-weight: bold;
 }
 
 /* TDesign 按钮样式 */
@@ -1427,6 +2348,22 @@ onMounted(() => {
     white-space: pre-wrap;
 }
 
+/* 问题知识点分析样式 */
+.question-analysis-section {
+    background: #F0F8FF;
+    border-radius: var(--td-border-radius);
+    padding: 16px;
+    margin-bottom: 16px;
+    border: 1px solid #CCE7FF;
+}
+
+.question-analysis-content {
+    background: var(--td-bg-color-container);
+    padding: 12px;
+    border-radius: var(--td-border-radius);
+    border: 1px solid var(--td-border-color);
+}
+
 .analysis-section {
     background: #FAFAFA;
     border-radius: var(--td-border-radius);
@@ -1615,6 +2552,149 @@ onMounted(() => {
     font-size: 14px;
 }
 
+/* 学习路径样式 */
+.learning-path-section {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.learning-path-header {
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.learning-path-header h3 {
+    margin: 0 0 8px 0;
+    color: var(--td-text-color-primary);
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.learning-path-description {
+    margin: 0;
+    color: var(--td-text-color-secondary);
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.learning-stages {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.learning-stage-card {
+    position: relative;
+}
+
+.stage-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.stage-number {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--td-brand-color);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.stage-header h4 {
+    margin: 0;
+    color: var(--td-text-color-primary);
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.learning-content-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.learning-block {
+    background: #FAFAFA;
+    padding: 16px;
+    border-radius: var(--td-border-radius);
+    border: 1px solid #F3F3F3;
+}
+
+.resources-block {
+    grid-column: 1 / -1;
+}
+
+.skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.improvement-list,
+.practice-list {
+    margin: 8px 0 0 0;
+    padding-left: 16px;
+    color: var(--td-text-color-secondary);
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.improvement-list li,
+.practice-list li {
+    margin-bottom: 4px;
+}
+
+.resources-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 12px;
+    margin-top: 8px;
+}
+
+.resource-item {
+    background: var(--td-bg-color-container);
+    border-radius: var(--td-border-radius);
+    border: 1px solid var(--td-border-color);
+    overflow: hidden;
+    transition: all 0.2s ease;
+}
+
+.resource-item:hover {
+    border-color: var(--td-brand-color);
+    box-shadow: var(--td-shadow-1);
+}
+
+.resource-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+    text-decoration: none;
+    color: var(--td-text-color-primary);
+    transition: all 0.2s ease;
+}
+
+.resource-link:hover {
+    color: var(--td-brand-color);
+}
+
+.resource-name {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.resource-icon {
+    font-size: 12px;
+    opacity: 0.6;
+}
+
 /* 导出页面样式 */
 .export-grid {
     display: grid;
@@ -1717,6 +2797,14 @@ onMounted(() => {
         grid-template-columns: 1fr;
     }
 
+    .learning-content-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .resources-list {
+        grid-template-columns: 1fr;
+    }
+
     .tab-navigation {
         flex-wrap: wrap;
     }
@@ -1733,6 +2821,27 @@ onMounted(() => {
     .filter-group {
         flex-direction: column;
         align-items: stretch;
+    }
+
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .principles-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .flow-steps.horizontal {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .flow-arrow-right {
+        transform: rotate(90deg);
+    }
+
+    .scenario-grid {
+        grid-template-columns: 1fr;
     }
 }
 </style>

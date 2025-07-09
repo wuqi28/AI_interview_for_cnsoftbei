@@ -13,7 +13,7 @@ const router = useRouter()
 const interviewStore = useInterviewStore()
 const userStore = useUserStore()
 
-const question = ref('同学您好，欢迎参加本次模拟面试。首先，请您进行一段简短的自我介绍。')
+const question = ref(`同学您好，欢迎参加本次模拟面试。我是您的面试官${interviewStore.interviewConfig.interviewerName}，来自${interviewStore.job.company}，很高兴与您见面。请保持网络畅通。首先，请您进行一段简短的自我介绍。`)
 
 const msgVisible = ref(false)
 const interviewText = ref('')
@@ -72,18 +72,12 @@ const msgOnClickConfirm = () => {
 }
 
 function timeStringToSeconds(timeStr) {
-  const parts = timeStr.split(":").map(Number); // 拆分成 [HH, MM, SS]
-  if (parts.length !== 3) return 0;
+  const parts = timeStr.split(":").map(Number); // 拆分成 [MM, SS]
+  if (parts.length !== 2) return 0;
 
-  const [hours, minutes, seconds] = parts;
-  return hours * 3600 + minutes * 60 + seconds;
+  const [minutes, seconds] = parts;
+  return minutes * 60 + seconds;
 }
-
-// 示例：
-const time = "01:23:45";
-const seconds = timeStringToSeconds(time);
-console.log(seconds); // 输出 5025
-
 
 const closeInterview = () => {
     showAnalyzing.value = true
@@ -100,7 +94,17 @@ const closeInterview = () => {
             showAnalyzing.value = false
             // console.log('✅ 面试结束:', resp.data.data)
             MessagePlugin.success(resp.data.message)
-            router.push('/report')
+            // router.push('/report')
+            console.log('job_type:', interviewStore.job_type);
+            if (interviewStore.job_type == 1) {
+                router.push('/programming')
+            } else if (interviewStore.job_type == 2) {
+                router.push('/operation')
+            } else if (interviewStore.job_type == 3) {
+                router.push('/product') 
+            } else {
+                router.push('/report') 
+            }
         } else {
             MessagePlugin.error(resp.data.message)
         }
@@ -162,6 +166,7 @@ const stopGazeStrengthList = () => {
 
 onMounted(() => {
     msgVisible.value = true
+    console.log('job_type:', interviewStore.job_type);
 })
 // -------------------------------------语音转写模块-----------------------------------------
 import { ref, onMounted, onUnmounted, watch } from 'vue'
@@ -476,7 +481,7 @@ const runDetection = async () => {
             drawLabels: false
         })
 
-        console.log(result)
+        // console.log(result)
 
         if (result.face.length > 0) {
             const face = result.face[0]
@@ -506,7 +511,7 @@ const runDetection = async () => {
                 const pitch = face.rotation.angle.pitch
                 const yaw = face.rotation.angle.yaw
                 const roll = face.rotation.angle.roll
-                console.log('头部角度:', yaw.toFixed(1), roll.toFixed(1))
+                // console.log('头部角度:', yaw.toFixed(1), roll.toFixed(1))
                 if (yaw > 0.15 || yaw < -0.15) {
                     isHeadYawFrequent.value = true
                 } else {
@@ -566,6 +571,15 @@ const dynamicTop = computed(() => {
 // ✅ 原始类型 → 显示颜色
 const typeColorMap = {
     "专业技能测试": "#0052D9",
+    "算法能力": "#0052D9",
+    "编码实现": "#0052D9",
+    "系统设计": "#0052D9",
+    "工具实操": "#0052D9",
+    "故障处理": "#0052D9",
+    "架构流程": "#0052D9",
+    "需求分析": "#0052D9",
+    "用户洞察": "#0052D9",
+    "方案设计": "#0052D9",
     "简历深挖与项目分析": "#FAAD14",
     "情景模拟": "#52C41A",
     "综合问答": "#722ED1"

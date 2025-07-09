@@ -28,6 +28,7 @@ def format_job(job):
         f"学历要求：{education}\n"
         f"岗位职责：{description_text}\n"
         f"所属公司：{company}（{boss}，{boss_title}）\n"
+        f"岗位类型：3"
     )
     return formatted
 

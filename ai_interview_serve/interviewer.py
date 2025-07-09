@@ -68,6 +68,41 @@ def chat_with_qwen(prompt, question):
         return None
 
 
+# def chat_with_spark(system_content, user_content, history=None):
+#     url = "https://spark-api-open.xf-yun.com/v1/chat/completions"
+#     headers = {
+#         "Authorization": "Bearer AosuiEXhADJYPTDpAosY:AXHracdHOqLUeWYodNwJ"
+#     }
+#
+#     messages = history[:] if history else []
+#
+#     if messages and messages[0]['role'] == 'system':
+#         messages[0]['content'] = system_content
+#     elif not any(msg['role'] == 'system' for msg in messages):
+#         messages.insert(0, {"role": "system", "content": system_content})
+#
+#     messages.append({"role": "user", "content": user_content})
+#
+#     payload = {
+#         "model": "4.0Ultra",
+#         "stream": True,
+#         "max_tokens": 8192,
+#         "top_k": 6,
+#         "temperature": 1,
+#         "messages": messages
+#     }
+#
+#     response = requests.post(url, headers=headers, json=payload, stream=True)
+#     response.encoding = "utf-8"
+#
+#     result_text = ""
+#     for line in response.iter_lines(decode_unicode=True):
+#         if line:
+#             result_text += line
+#
+#     return result_text, messages
+
+
 def chat_with_spark(system_content, user_content, history=None):
     url = "https://spark-api-open.xf-yun.com/v1/chat/completions"
     headers = {
@@ -76,12 +111,14 @@ def chat_with_spark(system_content, user_content, history=None):
 
     messages = history[:] if history else []
 
+    # 确保 system prompt 存在或更新
     if messages and messages[0]['role'] == 'system':
         messages[0]['content'] = system_content
     elif not any(msg['role'] == 'system' for msg in messages):
         messages.insert(0, {"role": "system", "content": system_content})
 
-    messages.append({"role": "user", "content": user_content})
+    # 构建本次完整消息列表用于请求
+    request_messages = messages + [{"role": "user", "content": user_content}]
 
     payload = {
         "model": "4.0Ultra",
@@ -89,7 +126,7 @@ def chat_with_spark(system_content, user_content, history=None):
         "max_tokens": 8192,
         "top_k": 6,
         "temperature": 1,
-        "messages": messages
+        "messages": request_messages
     }
 
     response = requests.post(url, headers=headers, json=payload, stream=True)
@@ -100,6 +137,7 @@ def chat_with_spark(system_content, user_content, history=None):
         if line:
             result_text += line
 
+    # 返回去除本轮 user_content 的 messages
     return result_text, messages
 
 
@@ -139,9 +177,17 @@ def get_system_prompt(interviewer_name, company, job_name, resume, interview_sty
     2. 简历深挖与项目分析：基于候选人简历中的项目、实习或科研经历，提问其实践参与情况，开场词：根据您的简历...；
     3. 情景模拟：设置与岗位相关的真实场景，引导候选人模拟决策或问题处理；
     4. 综合问答：提问职业规划、公司认知或团队协作等，考察动机与文化适配性。
+    5. 算法能力：围绕常见算法（如排序、查找、动态规划等）展开提问，考察候选人对算法思想和时间复杂度的理解；
+    6. 编码实现：要求候选人就某个问题描述进行代码实现，考察其编程能力、边界处理和逻辑思维；
+    7. 系统设计：考察候选人对系统架构、模块拆分、接口设计等方面的理解，通常适用于中大型应用的设计题；
+    8. 工具实操：围绕常用工具（如 Git、Linux、Docker、Shell 脚本等）提问，考察候选人上手使用与命令理解能力；
+    9. 故障处理：设置典型系统异常情景，提问候选人的排查与应急响应流程，考察其实战应变与判断能力；
+    10. 架构流程：考察候选人对 CI/CD、部署、日志、监控、告警等运维流程或系统架构理解的完整性；
+    11. 需求分析：基于特定业务目标或背景，要求候选人拆解用户需求、提取核心场景，考察其产品理解力与逻辑条理；
+    12. 用户洞察：给出用户数据或特征，引导候选人进行用户画像分析，挖掘痛点，考察用户敏感度；
+    13. 方案设计：要求候选人基于场景提出产品方案，含功能结构、流程逻辑、亮点创意等，考察其产品表达与创新能力；
     
     请只输出一个问题，不要输出任何解释说明。
-
     
     岗位要求:{job_description}
 
@@ -200,6 +246,16 @@ def get_parsing_prompt(company, job_name, resume, job_description):
 
 
 if __name__ == '__main__':
-    res = optimize_speaker_answer(
-        "嗯面试官您好，我是长江职业学院软件技术专业的吴奇，拥有扎实的前端开发经验和丰富的数据，可视化项目经验，在校期间我专业成绩排名第一，荣获国家奖学金，并带领团队在第十届中国软件杯中斩获高职组二等奖。通过团队协作，我参与了在线数据可视化分析平台的开发，负责前端设计与实现运用GS及快瑞或者shop和一下子等技术，有效提升了用户体验和数据嗯交互效率。我具备良好的沟通能力和团队协作啊合作精神，期待在贵公司有所发挥，持续贡献前端开发与数据可视化领域的力量，谢谢。")
-    print(res)
+    # res = optimize_speaker_answer(
+    #     "嗯面试官您好，我是长江职业学院软件技术专业的吴奇，拥有扎实的前端开发经验和丰富的数据，可视化项目经验，在校期间我专业成绩排名第一，荣获国家奖学金，并带领团队在第十届中国软件杯中斩获高职组二等奖。通过团队协作，我参与了在线数据可视化分析平台的开发，负责前端设计与实现运用GS及快瑞或者shop和一下子等技术，有效提升了用户体验和数据嗯交互效率。我具备良好的沟通能力和团队协作啊合作精神，期待在贵公司有所发挥，持续贡献前端开发与数据可视化领域的力量，谢谢。")
+    # print(res)
+
+    prompt = get_system_prompt("沐沐", "网易",
+                      "前端开发工程师", "# 个人简历\n\n## 基本信息\n\n- **姓   名**: 吴奇\n- **出生年月**: 2001年2月28日\n- **民   族**: 汉\n- **身   高**: 171cm\n- **电   话**: 18671505901\n- **政治面貌**: 中共预备党员\n- **邮   箱**: 857592710@qq.com\n- **毕业院校**: 长江职业学院\n- **住   址**: 湖北省咸宁市咸安区\n\n## 学历\n\n- **专科**\n  - 2019年9月——2022年6月   长江职业学院   软件技术(专科)\n  - 具有前端开发基础\n  - 正在准备专升本考试, 目标院校距离贵公司很近, 希望升学之后也能继续在贵公司就职\n\n## 应聘职位\n\n- 前端开发实习生、数据标注实习生\n\n## 项目经验\n\n- 团队协作共同开发了一款在线数据可视化分析平台, 通过数据交互实现数据可视化, 我在项目中负责前端开发, 运用了JS、JQuery、bootstrap、echarts等前端技术。\n\n## 校园经历\n\n- 2021学年与学院同学代表学校出战第十届“中国软件杯”, 在团队中负责前端开发\n- 2021学年专业排名第一\n- 2019年-2021年担任长江职业学院校学生会督察部委员与督察部部长\n\n## 在校荣誉\n\n- 2021学年国家奖学金\n- 第十届“中国软件杯”总决赛高职组二等奖\n- 长江职业学院程序设计大赛优胜奖\n- 计算机二级office合格证书\n\n## 自我评价\n\n从德、智、体、美、劳多方面全面发展, 在学习方面名列前茅、在生活方面广交益友、在工作方面认真努力",
+                      "亲切随和型(Friendly & Supportive)", "## 职位描述\n\n1. 负责 C 端与后台产品的前端开发工作，包括页面设计、交互实现及性能优化，提升用户体验；\n2. 参与后台管理系统的设计与开发，确保功能稳定性和易用性；\n3. 维护现有前端系统，及时修复问题并持续改进代码质量；\n4. 与产品、设计及后端团队协作，完成拉新相关功能的开发和上线；\n5. 关注前端技术发展趋势，引入合适的工具和技术提升开发效率；\n6. 编写清晰规范的技术文档，为团队协作提供支持。\n\n## 职位要求\n\n1. 计算机相关专业本科及以上学历，具备扎实的计算机基础知识；\n2. 1-3 年前端开发经验，熟悉 HTML/CSS/JavaScript 等核心技术，熟练使用 React/Vue 等主流框架进行项目开发；\n3. 熟悉前后端交互流程，能够独立完成 C 端及后台系统的前端功能设计与实现，了解 RESTful API 或 GraphQL 的使用；\n4. 具备良好的逻辑思维能力和代码规范意识，注重用户体验和性能优化；\n5. 拥有较强的沟通协作能力，能够快速理解业务需求并转化为技术方案，适应敏捷开发模式；\n6. 熟悉 Node.js 或有小程序开发经验者优先，对新技术保持敏感度和学习热情。\n",
+                      "情景模拟")
+
+    text, msg = chat_with_spark(prompt, "你好")
+
+    print(parse_spark_stream(text))
+    print(msg)

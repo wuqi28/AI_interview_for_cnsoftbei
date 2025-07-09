@@ -4,6 +4,7 @@ import Components from 'unplugin-vue-components/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import AutoImport from 'unplugin-auto-import/vite'
 import path from 'path'
+import monacoEditorPlugin from 'vite-plugin-monaco-editor'
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -16,7 +17,8 @@ export default defineConfig({
       resolvers: [
         ElementPlusResolver()
       ]
-    })
+    }),
+    // monacoEditorPlugin({})
   ],
   resolve: {
     alias: {

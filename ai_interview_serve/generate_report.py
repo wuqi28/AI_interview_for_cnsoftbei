@@ -38,6 +38,7 @@ def generate_interview_evaluation(user_content: str):
 
 【三】文本特征：
 - speaker_text：面试者的完整回答文本
+- ai_interviewer_text：AI面试官的完整提问文本
 
 请你完成以下任务：
 
@@ -64,6 +65,7 @@ def generate_interview_evaluation(user_content: str):
    - audio_analysis：结合音高、语速、情绪等分析语音表现，还有逻辑关系
    - video_analysis：面部表情、专注度、视觉反馈分析
    - text_analysis：语言结构、内容逻辑、表达规范性分析
+   - question_analysis：分析面试者对 AI 面试官提问所涉及知识点的掌握与应答情况。
 
 2. **总体信号摘要（multimodal_signal_summary）**：
    - 分别从语音、视频、文本三个通道总结本次面试者整体表现优劣点（例如语速稳定、表情紧张、结构清晰等）
@@ -77,6 +79,7 @@ def generate_interview_evaluation(user_content: str):
 4. **知识点掌握分析（knowledge_analysis）**：
    - 针对每轮 ai_interviewer_text 和 speaker_text 内容，推断应试者是否掌握核心知识点
    - 请输出知识点名称与掌握程度（1~100）
+   - 知识点可以包括表达训练、个人介绍等
 
 5. **MBTI 人格类型预测（mbti）**：
    - 请根据语言风格、行为表现、情绪趋势，判断面试者可能的 MBTI 类型（如 INTP、ESTJ）
@@ -84,6 +87,14 @@ def generate_interview_evaluation(user_content: str):
 
 6. **闪光点能力（highlight_abilities，可选）**：
    - 请列举 1~3 个面试者在面试中表现突出的维度，并说明理由（如“表达节奏好”，“情绪稳定”等）
+   
+7. **个性化学习路径推荐（learning_path）**
+    请设计循序渐进、针对性强的学习路径，包含：
+    - stage：阶段名称（如“基础强化阶段”, "进阶提升阶段", "综合实战阶段"等等）
+    - target_skills：本阶段目标技能列表
+    - improvements：需改进重点
+    - recommended_practice：练习建议
+    - resources：推荐学习资源（包含 name 和 url）
 
 ---
 
@@ -117,7 +128,8 @@ def generate_interview_evaluation(user_content: str):
       "round": <int>,
       "audio_analysis": "<分析内容>",
       "video_analysis": "<分析内容>",
-      "text_analysis": "<分析内容>"
+      "text_analysis": "<分析内容>",
+      "question_analysis": "<分析内容>"
     }
   ],
   "multimodal_signal_summary": {
@@ -136,6 +148,18 @@ def generate_interview_evaluation(user_content: str):
     {
       "ability": "<闪光点能力>",
       "evidence": "<表现证据>"
+    }
+  ],
+  "learning_path": [
+    {
+        "stage": "<阶段名称>",
+        "target_skills": ["<技能1>", "<技能2>", ...],
+        "improvements": ["<改进重点1>", "<改进重点2>", ...],
+        "recommended_practice": ["<练习1>", "<练习2>", ...],
+        "resources": [
+        {"name": "<资源名>", "url": "<链接>"},
+        ...
+        ]
     }
   ]
 }

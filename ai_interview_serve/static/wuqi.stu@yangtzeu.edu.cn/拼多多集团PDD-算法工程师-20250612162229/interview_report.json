@@ -51,49 +51,57 @@
       "round": 1,
       "audio_analysis": "音高较高，语速适中，但语音情绪为sad，可能给人不够积极的印象，停顿次数4次，停顿总时长8.74秒，停顿时间占比0.25，逻辑上清晰介绍个人背景与专业技能。",
       "video_analysis": "面部表情情绪不正向，且未聚焦，缺乏良好的眼神交流，视觉反馈不佳。",
-      "text_analysis": "语言结构清晰，内容有条理，准确介绍个人专业、实习经历和技能，表达规范。"
+      "text_analysis": "语言结构清晰，内容有条理，准确介绍个人专业、实习经历和技能，表达规范。",
+      "question_analysis": "测试内容"
     },
     {
       "round": 2,
       "audio_analysis": "音高有所降低，语速适中，语音情绪仍为sad，停顿次数3次，停顿时间占比0.24，逻辑上能阐述CNN的优势和工作原理。",
       "video_analysis": "面部表情情绪不正向，但有良好的眼神交流。",
-      "text_analysis": "语言结构合理，准确回答问题，但存在口误（转基神经网络），影响表达规范性。"
+      "text_analysis": "语言结构合理，准确回答问题，但存在口误（转基神经网络），影响表达规范性。",
+      "question_analysis": "测试内容"
     },
     {
       "round": 3,
       "audio_analysis": "音高变化不大，语速适中，语音情绪sad，停顿次数3次，停顿时间占比0.23，逻辑清晰介绍协同过滤算法。",
       "video_analysis": "面部表情正向，有良好的眼神交流。",
-      "text_analysis": "语言结构清晰，准确回答问题，但使用语气词“呃”，影响表达的流畅度。"
+      "text_analysis": "语言结构清晰，准确回答问题，但使用语气词“呃”，影响表达的流畅度。",
+      "question_analysis": "测试内容"
     },
     {
       "round": 4,
       "audio_analysis": "音高降低，语速稍快，语音情绪为surprise，停顿次数2次，停顿时间占比0.2，逻辑上能说明词嵌入技术的作用和实现方式。",
       "video_analysis": "面部表情正向，有良好的眼神交流。",
-      "text_analysis": "语言结构合理，但存在口误（呃此嵌入），且使用语气词，影响表达质量。"
+      "text_analysis": "语言结构合理，但存在口误（呃此嵌入），且使用语气词，影响表达质量。",
+      "question_analysis": "测试内容"
     },
     {
       "round": 5,
       "audio_analysis": "音高平稳，语速适中，语音情绪sad，停顿次数2次，停顿时间占比0.21，逻辑清晰阐述过拟合现象及防止方法。",
       "video_analysis": "面部表情情绪不正向，有良好的眼神交流。",
-      "text_analysis": "语言结构清晰，准确回答问题，但使用语气词“呃”。"
+      "text_analysis": "语言结构清晰，准确回答问题，但使用语气词“呃”。",
+      "question_analysis": "测试内容"
     },
     {
       "round": 6,
       "audio_analysis": "音高稳定，语速适中，语音情绪surprise，停顿次数4次，停顿时间占比0.33，逻辑上能介绍分布式计算框架的优势和应用场景。",
       "video_analysis": "面部表情情绪不正向，有良好的眼神交流。",
-      "text_analysis": "语言结构合理，准确回答问题，但停顿较多。"
+      "text_analysis": "语言结构合理，准确回答问题，但停顿较多。",
+      "question_analysis": "测试内容"
     },
     {
       "round": 7,
       "audio_analysis": "音高较低，语速适中，语音情绪angry，停顿次数2次，停顿时间占比0.31，逻辑清晰说明A/B测试评估算法效果的方法。",
       "video_analysis": "面部表情情绪不正向，有良好的眼神交流。",
-      "text_analysis": "语言结构清晰，准确回答问题。"
+      "text_analysis": "语言结构清晰，准确回答问题。",
+      "question_analysis": "测试内容"
     },
     {
       "round": 8,
       "audio_analysis": "音高最低，语速较快，语音情绪sad，停顿次数3次，停顿时间占比0.39，逻辑上能说明Batch Normalization的作用和影响。",
       "video_analysis": "面部表情正向，有良好的眼神交流。",
-      "text_analysis": "语言结构合理，准确回答问题，但停顿较多，使用语气词“嗯”。"
+      "text_analysis": "语言结构合理，准确回答问题，但停顿较多，使用语气词“嗯”。",
+      "question_analysis": "测试内容"
     }
   ],
   "multimodal_signal_summary": {
